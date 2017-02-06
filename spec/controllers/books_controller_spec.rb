@@ -19,51 +19,44 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe BooksController, type: :controller do
+  # include ApiDoc::V1::Books
 
-  # This should return the minimal set of attributes required to create a valid
-  # Book. As you add validations to Book, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:book)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+     { name: '' }
   }
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # BooksController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:author) { create(:author) }
+  let!(:book) { create(:book, author: author) }
 
   describe "GET #index" do
-    it "assigns all books as @books" do
-      book = Book.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(assigns(:books)).to eq([book])
+    it "returns 200 status" do
+      get :index
+      expect(response).to have_http_status(:ok)
     end
   end
 
   describe "GET #show" do
-    it "assigns the requested book as @book" do
-      book = Book.create! valid_attributes
-      get :show, params: {id: book.to_param}, session: valid_session
-      expect(assigns(:book)).to eq(book)
+    it "returns 200 status" do
+      get :show, params: {id: book.id}
+      expect(response).to have_http_status(:ok)
     end
   end
 
   describe "GET #new" do
-    it "assigns a new book as @book" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:book)).to be_a_new(Book)
+    it "returns 200 status" do
+      get :new
+      expect(response).to have_http_status(:ok)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested book as @book" do
-      book = Book.create! valid_attributes
-      get :edit, params: {id: book.to_param}, session: valid_session
-      expect(assigns(:book)).to eq(book)
+      get :edit, params: {id: book.id}
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -71,31 +64,26 @@ RSpec.describe BooksController, type: :controller do
     context "with valid params" do
       it "creates a new Book" do
         expect {
-          post :create, params: {book: valid_attributes}, session: valid_session
+          post :create, params: {book: valid_attributes}
         }.to change(Book, :count).by(1)
       end
 
-      it "assigns a newly created book as @book" do
-        post :create, params: {book: valid_attributes}, session: valid_session
-        expect(assigns(:book)).to be_a(Book)
-        expect(assigns(:book)).to be_persisted
-      end
-
-      it "redirects to the created book" do
-        post :create, params: {book: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Book.last)
+      it "returns 201 status" do
+        post :create, params: {book: valid_attributes}
+        expect(response).to have_http_status(201)
       end
     end
 
     context "with invalid params" do
-      it "assigns a newly created but unsaved book as @book" do
-        post :create, params: {book: invalid_attributes}, session: valid_session
-        expect(assigns(:book)).to be_a_new(Book)
+      it "returns 422 status" do
+        post :create, params: {book: invalid_attributes}
+        expect(response).to have_http_status(422)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, params: {book: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
+      it "doesn't create a new book" do
+        expect {
+          post :create, params: {book: invalid_attributes}
+        }.to_not change(Book.count)
       end
     end
   end
@@ -107,52 +95,34 @@ RSpec.describe BooksController, type: :controller do
       }
 
       it "updates the requested book" do
-        book = Book.create! valid_attributes
-        put :update, params: {id: book.to_param, book: new_attributes}, session: valid_session
-        book.reload
-        skip("Add assertions for updated state")
+        put :update, params: {id: book.id, book: {name: 'New Book'}}
+        expect(book.reload).name to eq 'New Book'
       end
 
-      it "assigns the requested book as @book" do
-        book = Book.create! valid_attributes
-        put :update, params: {id: book.to_param, book: valid_attributes}, session: valid_session
-        expect(assigns(:book)).to eq(book)
-      end
-
-      it "redirects to the book" do
-        book = Book.create! valid_attributes
-        put :update, params: {id: book.to_param, book: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(book)
+      it "returns 200 status" do
+        put :update, params: {id: book.id, book: valid_attributes}
+        expect(response).to have_http_status(:ok)
       end
     end
 
     context "with invalid params" do
-      it "assigns the book as @book" do
-        book = Book.create! valid_attributes
-        put :update, params: {id: book.to_param, book: invalid_attributes}, session: valid_session
-        expect(assigns(:book)).to eq(book)
-      end
-
-      it "re-renders the 'edit' template" do
-        book = Book.create! valid_attributes
-        put :update, params: {id: book.to_param, book: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
+      it "returns 422 status" do
+        put :update, params: {id: book.id, book: invalid_attributes}, session: valid_session
+        expect(response).to have_http_status(422)
       end
     end
   end
 
   describe "DELETE #destroy" do
     it "destroys the requested book" do
-      book = Book.create! valid_attributes
       expect {
-        delete :destroy, params: {id: book.to_param}, session: valid_session
+        delete :destroy, params: {id: book.id}
       }.to change(Book, :count).by(-1)
     end
 
-    it "redirects to the books list" do
-      book = Book.create! valid_attributes
-      delete :destroy, params: {id: book.to_param}, session: valid_session
-      expect(response).to redirect_to(books_url)
+    it "returns 204 status" do
+      delete :destroy, params: {id: book.id}
+      expect(response).to have_http_status(204)
     end
   end
 
