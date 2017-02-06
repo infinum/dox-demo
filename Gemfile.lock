@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/infinum/dox.git
+  revision: 33146482d6a8f2299580e1e8552e05a7b364af88
+  specs:
+    dox (1.0.0.alpha)
+      rails (>= 4.0)
+      rspec-core
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -157,6 +165,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dox!
   factory_girl_rails
   json_api_responders
   jsonapi-rails

@@ -21,12 +21,11 @@ gem 'puma', '~> 3.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 gem 'json_api_responders'
 gem 'jsonapi-rails'
-gem 'dox', require: 'false', github: 'infinum/dox'
+gem 'dox', require: false, github: 'infinum/dox'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

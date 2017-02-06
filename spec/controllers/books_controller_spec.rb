@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
-  # include ApiDoc::V1::Books
   let(:author) { create(:author) }
   let!(:book) { create(:book, author: author) }
 

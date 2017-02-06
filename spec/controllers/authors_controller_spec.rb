@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AuthorsController, type: :controller do
+  include ApiDoc::V1::Authors::Api
   let!(:author) { create(:author) }
 
   let(:valid_attributes) {
@@ -12,6 +13,7 @@ RSpec.describe AuthorsController, type: :controller do
   }
 
   describe "GET #index" do
+    include ApiDoc::V1::Authors::Index
     it "returns 200 status" do
       get :index
       expect(response).to have_http_status(:ok)
