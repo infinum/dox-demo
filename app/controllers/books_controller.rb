@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   def index
     @books = Book.all
-
+    @books = @books.author(params[:author_id]) if params[:author_id]
     render json: @books
   end
 
@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   # POST /books
   def create
     @book = Book.new(book_params)
-    
+
     if @book.save
       render json: @book, status: :created, location: @book
     else
