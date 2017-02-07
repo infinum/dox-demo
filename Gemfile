@@ -23,7 +23,7 @@ gem 'puma', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
-gem 'json_api_responders'
+gem 'json_api_responders', path: '/Users/nevenrakonic/projects/json_api_responders'
 gem 'jsonapi-rails'
 gem 'dox', require: false, github: 'infinum/dox'
 
@@ -32,6 +32,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
 end
 
 group :development do

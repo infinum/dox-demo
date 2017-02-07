@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe BookCollectionsController, type: :controller do
+RSpec.describe Api::V1::BookCollectionsController, type: :controller do
   let!(:book_collection) { create(:book_collection) }
 
   let(:valid_attributes) {
