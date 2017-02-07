@@ -4,6 +4,7 @@ module Api
       type 'authors'
 
       attributes :name
+      
       has_many :books, class: SerializableBook do
       end
     end

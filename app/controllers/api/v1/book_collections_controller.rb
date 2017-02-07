@@ -11,7 +11,7 @@ module Api
 
       # GET /book_collections/1
       def show
-         respond_with @book_collection, class: SerializableBookCollection
+         respond_with @book_collection, class: SerializableBookCollection, include: [:books]
       end
 
       # POST /book_collections

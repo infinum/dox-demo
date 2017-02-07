@@ -12,7 +12,7 @@ module Api
 
       # GET /books/1
       def show
-        respond_with @book, class: SerializableBook
+        respond_with @book, class: SerializableBook, include: [:author, :book_collection]
       end
 
       # POST /books
