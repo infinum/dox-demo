@@ -3,39 +3,38 @@ class BookCollectionsController < ApplicationController
 
   # GET /book_collections
   def index
-    @book_collections = BookCollection.all
-
-    render json: @book_collections
+    book_collections = BookCollection.all
+    respond_with book_collections
   end
 
   # GET /book_collections/1
   def show
-    render json: @book_collection
+     respond_with @book_collection
   end
 
   # POST /book_collections
   def create
-    @book_collection = BookCollection.new(book_collection_params)
-
-    if @book_collection.save
-      render json: @book_collection, status: :created, location: @book_collection
+    book_collection = BookCollection.new(book_collection_params)
+    if book_collection.save
+      respond_with book_collection
     else
-      render json: @book_collection.errors, status: :unprocessable_entity
+      respond_with book_collection, on_error: book_collection.errors.messages
     end
   end
 
   # PATCH/PUT /book_collections/1
   def update
     if @book_collection.update(book_collection_params)
-      render json: @book_collection
+      respond_with @book_collection
     else
-      render json: @book_collection.errors, status: :unprocessable_entity
+      respond_with @book_collection, on_error: @book_collection.errors.messages
     end
   end
 
   # DELETE /book_collections/1
   def destroy
     @book_collection.destroy
+    respond_with 204
   end
 
   private

@@ -3,39 +3,38 @@ class AuthorsController < ApplicationController
 
   # GET /authors
   def index
-    @authors = Author.all
-
-    render json: @authors
+    authors = Author.all
+    respond_with authors
   end
 
   # GET /authors/1
   def show
-    render json: @author
+    respond_with @author
   end
 
   # POST /authors
   def create
-    @author = Author.new(author_params)
-
-    if @author.save
-      render json: @author, status: :created, location: @author
+    author = Author.new(author_params)
+    if author.save
+      respond_with author
     else
-      render json: @author.errors, status: :unprocessable_entity
+      respond_with author, on_error: author.errors.messages
     end
   end
 
   # PATCH/PUT /authors/1
   def update
     if @author.update(author_params)
-      render json: @author
+      respond_with @author
     else
-      render json: @author.errors, status: :unprocessable_entity
+      respond_with @author, on_error: @author.errors.messages
     end
   end
 
   # DELETE /authors/1
   def destroy
     @author.destroy
+    respond_with 204
   end
 
   private
