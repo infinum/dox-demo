@@ -14,7 +14,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -53,7 +53,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -80,6 +80,27 @@
               }
             }
 
++ Request does not find an author
+**GET**&nbsp;&nbsp;`/api/v1/authors/invalid_id`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+            
+              ]
+            }
+
 ### Create an author [POST /api/v1/authors]
 
 
@@ -88,13 +109,14 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
             {
               "author": {
-                "name": "Author_4"
+                "name": "Author_5"
               }
             }
 
@@ -111,7 +133,7 @@
                 "id": "2",
                 "type": "authors",
                 "attributes": {
-                  "name": "Author_4"
+                  "name": "Author_5"
                 },
                 "relationships": {
                   "books": {
@@ -133,6 +155,7 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
@@ -178,6 +201,7 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
 + Response 204
@@ -196,7 +220,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -235,7 +259,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -262,6 +286,27 @@
               }
             }
 
++ Request does not find a book collection
+**GET**&nbsp;&nbsp;`/api/v1/book_collections/invalid_id`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+            
+              ]
+            }
+
 ### Create a book collection [POST /api/v1/book_collections]
 
 
@@ -270,13 +315,14 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
             {
               "book_collection": {
-                "name": "Book_collection_4"
+                "name": "Book_collection_5"
               }
             }
 
@@ -293,7 +339,7 @@
                 "id": "2",
                 "type": "book_collections",
                 "attributes": {
-                  "name": "Book_collection_4"
+                  "name": "Book_collection_5"
                 },
                 "relationships": {
                   "books": {
@@ -303,6 +349,43 @@
                   }
                 }
               }
+            }
+
++ Request returns unprocessable entity
+**POST**&nbsp;&nbsp;`/api/v1/book_collections`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            {
+              "book_collection": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
             }
 
 ### Update a book collection [PUT /api/v1/book_collections/{id}]
@@ -315,6 +398,7 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
@@ -350,16 +434,54 @@
               }
             }
 
++ Request returns unprocessable entity
+**PUT**&nbsp;&nbsp;`/api/v1/book_collections/1`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            {
+              "book_collection": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
 ### Delete a book collection [DELETE /api/v1/book_collections/{id}]
 
 + Parameters
     + id: `1` (number, required)
 
-+ Request destroys the requested book collection
++ Request deletes the requested book collection
 **DELETE**&nbsp;&nbsp;`/api/v1/book_collections/1`
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
 + Response 204
@@ -375,7 +497,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -419,7 +541,7 @@
 
     + Headers
 
-
+            Accept: application/json
 
 + Response 200
 
@@ -456,7 +578,7 @@
                   "id": "1",
                   "type": "authors",
                   "attributes": {
-                    "name": "Author_16"
+                    "name": "Author_17"
                   },
                   "relationships": {
                     "books": {
@@ -470,7 +592,7 @@
                   "id": "1",
                   "type": "book_collections",
                   "attributes": {
-                    "name": "Book_collection_16"
+                    "name": "Book_collection_17"
                   },
                   "relationships": {
                     "books": {
@@ -483,6 +605,27 @@
               ]
             }
 
++ Request does not return a book
+**GET**&nbsp;&nbsp;`/api/v1/books/invalid_id`
+
+    + Headers
+
+            Accept: application/json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+            
+              ]
+            }
+
 ### Create a book [POST /api/v1/books]
 
 
@@ -491,6 +634,7 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
@@ -532,6 +676,96 @@
               }
             }
 
++ Request returns unprocessable entity
+**POST**&nbsp;&nbsp;`/api/v1/books`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            {
+              "book": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Author must exist",
+                  "source": {
+                    "parameter": "author",
+                    "pointer": "data/attributes/author"
+                  }
+                },
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
++ Request doesn't create a new book
+**POST**&nbsp;&nbsp;`/api/v1/books`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            {
+              "book": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Author must exist",
+                  "source": {
+                    "parameter": "author",
+                    "pointer": "data/attributes/author"
+                  }
+                },
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
 ### Update a book [PUT /api/v1/books/{id}]
 
 + Parameters
@@ -542,6 +776,7 @@
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
     + Body
@@ -582,16 +817,54 @@
               }
             }
 
++ Request returns unprocessable entity
+**PUT**&nbsp;&nbsp;`/api/v1/books/1`
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            {
+              "book": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
 ### Delete a book [DELETE /api/v1/books/{id}]
 
 + Parameters
     + id: `1` (number, required)
 
-+ Request destroys the requested book
++ Request deletes the requested book
 **DELETE**&nbsp;&nbsp;`/api/v1/books/1`
 
     + Headers
 
+            Accept: application/json
             Content-Type: application/x-www-form-urlencoded
 
 + Response 204

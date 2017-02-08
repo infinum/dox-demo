@@ -13,6 +13,11 @@ RSpec.describe Api::V1::BooksController, type: :controller do
      { name: '' }
   }
 
+  before {
+    # Set request header so we don't get warnings when we generate documentation
+    request.accept = "application/json"
+  }
+
   describe "GET #index" do
     include ApiDoc::V1::Books::Index
     it "returns books", :dox do
@@ -23,9 +28,18 @@ RSpec.describe Api::V1::BooksController, type: :controller do
 
   describe "GET #show" do
     include ApiDoc::V1::Books::Show
-    it "returns a book", :dox do
-      get :show, params: {id: book.id}
-      expect(response).to have_http_status(:ok)
+    context 'valid params' do
+      it "returns a book", :dox do
+        get :show, params: {id: book.id}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'invalid params' do
+      it "does not return a book", :dox do
+        get :show, params: {id: 'invalid_id'}
+        expect(response).to have_http_status(404)
+      end
     end
   end
 
@@ -44,8 +58,8 @@ RSpec.describe Api::V1::BooksController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "returns 422 status" do
+    context "with invalid params", :dox do
+      it "returns unprocessable entity" do
         post :create, params: {book: invalid_attributes}
         expect(response).to have_http_status(422)
       end
@@ -73,7 +87,7 @@ RSpec.describe Api::V1::BooksController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns 422 status" do
+      it "returns unprocessable entity", :dox do
         put :update, params: {id: book.id, book: invalid_attributes}
         expect(response).to have_http_status(422)
       end

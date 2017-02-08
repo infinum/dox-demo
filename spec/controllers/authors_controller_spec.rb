@@ -12,6 +12,11 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     { name: "" }
   }
 
+  before {
+    # Set request header so we don't get warnings when we generate documentation
+    request.accept = "application/json"
+  }
+
   describe "GET #index" do
     include ApiDoc::V1::Authors::Index
 
@@ -23,9 +28,18 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
 
   describe "GET #show" do
     include ApiDoc::V1::Authors::Show
-    it "returns an author", :dox do
-      get :show, params: {id: author.id}
-      expect(response).to have_http_status(:ok)
+    context 'valid params' do
+      it "returns an author", :dox do
+        get :show, params: {id: author.id}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'invalid params' do
+      it 'does not find an author', :dox do
+        get :show, params: {id: 'invalid_id'}
+        expect(response).to have_http_status(404)
+      end
     end
   end
 
@@ -45,7 +59,7 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns 422 status" do
+      it "returns unprocessable entity" do
         post :create, params: {author: invalid_attributes}
         expect(response).to have_http_status(422)
       end
@@ -73,7 +87,7 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns 422 status" do
+      it "returns unprocessable entity" do
         put :update, params: {id: author.id, author: invalid_attributes}
         expect(response).to have_http_status(422)
       end
