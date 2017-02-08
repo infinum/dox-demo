@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::BookCollectionsController, type: :controller do
+  include ApiDoc::V1::BookCollections::Api
   let!(:book_collection) { create(:book_collection) }
 
   let(:valid_attributes) {
@@ -12,22 +13,25 @@ RSpec.describe Api::V1::BookCollectionsController, type: :controller do
   }
 
   describe "GET #index" do
-    it "returns 200 status" do
+    include ApiDoc::V1::BookCollections::Index
+    it "returns book collections", :dox do
       get :index
       expect(response).to have_http_status(:ok)
     end
   end
 
   describe "GET #show" do
-    it "returns 200 status" do
+    include ApiDoc::V1::BookCollections::Show
+    it "returns a book collection", :dox do
       get :show, params: {id: book_collection.id}
       expect(response).to have_http_status(:ok)
     end
   end
 
   describe "POST #create" do
+    include ApiDoc::V1::BookCollections::Create
     context "with valid params" do
-      it "creates a new BookCollection" do
+      it "creates a new book collection", :dox do
         expect {
           post :create, params: {book_collection: valid_attributes}
         }.to change(BookCollection, :count).by(1)
@@ -54,8 +58,9 @@ RSpec.describe Api::V1::BookCollectionsController, type: :controller do
   end
 
   describe "PUT #update" do
+    include ApiDoc::V1::BookCollections::Update
     context "with valid params" do
-      it "updates the requested BookCollection" do
+      it "updates the requested book collection", :dox do
         put :update, params: {id: book_collection.id, book_collection: {name: 'New Book Collection'}}
         expect(book_collection.reload.name).to eq 'New Book Collection'
       end
@@ -75,7 +80,8 @@ RSpec.describe Api::V1::BookCollectionsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested BookCollection" do
+    include ApiDoc::V1::BookCollections::Destroy
+    it "deletes the requested book collection", :dox do
       expect {
         delete :destroy, params: {id: book_collection.id}
       }.to change(BookCollection, :count).by(-1)

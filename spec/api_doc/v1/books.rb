@@ -1,33 +1,33 @@
 module ApiDoc
   module V1
-    module Authors
+    module Books
       extend Dox::DSL::Syntax
 
       document :api do
-        resource 'Authors' do
-          endpoint '/authors'
-          group 'Authors'
+        resource 'Books' do
+          endpoint '/books'
+          group 'Books'
         end
       end
 
       document :index do
-        action 'Get authors'
+        action 'Get books'
       end
 
       document :show do
-        action 'Get an author'
+        action 'Get a book'
       end
 
       document :update do
-        action 'Update an author'
+        action 'Update a book'
       end
 
       document :create do
-        action 'Create an author'
+        action 'Create a book'
       end
 
       document :destroy do
-        action 'Delete an author'
+        action 'Delete a book'
       end
     end
   end
