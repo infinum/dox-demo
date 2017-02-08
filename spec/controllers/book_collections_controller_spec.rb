@@ -12,11 +12,6 @@ RSpec.describe Api::V1::BookCollectionsController, type: :controller do
     { name: "" }
   }
 
-  before {
-    # Set request header so we don't get warnings when we generate documentation
-    request.accept = "application/json"
-  }
-
   describe "GET #index" do
     include ApiDoc::V1::BookCollections::Index
     it "returns book collections", :dox do

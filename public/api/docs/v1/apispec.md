@@ -1,5 +1,13 @@
 # Dox Example
 
+This api is implemented according to the JSON API spec.
+
+### Filter
+
+If you want to filter your query, you can do so by setting the supported filter parameters in the following way:
+
+- `?author_id=24`
+
 # Group Authors
 
 
@@ -14,7 +22,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -53,7 +62,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -85,7 +95,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 404
 
@@ -109,8 +120,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -145,6 +156,43 @@
               }
             }
 
++ Request returns unprocessable entity
+**POST**&nbsp;&nbsp;`/api/v1/authors`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+              "author": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "Validation errors",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
 ### Update an author [PUT /api/v1/authors/{id}]
 
 + Parameters
@@ -155,8 +203,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -191,6 +239,43 @@
               }
             }
 
++ Request returns unprocessable entity
+**PUT**&nbsp;&nbsp;`/api/v1/authors/1`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+              "author": {
+                "name": ""
+              }
+            }
+
++ Response 422
+
+    + Headers
+
+            Content-Type: application/vnd.api+json; charset=utf-8
+
+    + Body
+
+            {
+              "errors": [
+                {
+                  "title": "Validation errors",
+                  "detail": "Name can't be blank",
+                  "source": {
+                    "parameter": "name",
+                    "pointer": "data/attributes/name"
+                  }
+                }
+              ]
+            }
+
 ### Delete an author [DELETE /api/v1/authors/{id}]
 
 + Parameters
@@ -201,8 +286,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 204
 
@@ -220,7 +305,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -259,7 +345,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -291,7 +378,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 404
 
@@ -315,8 +403,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -356,8 +444,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -378,7 +466,7 @@
             {
               "errors": [
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -398,8 +486,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -439,8 +527,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -461,7 +549,7 @@
             {
               "errors": [
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -481,12 +569,14 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 204
 
 ## Books [/books]
+### Supported filter params
+  - author_id
 
 
 ### Get books [GET /api/v1/books]
@@ -497,7 +587,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -541,7 +632,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 200
 
@@ -610,7 +702,8 @@
 
     + Headers
 
-            Accept: application/json
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 404
 
@@ -634,15 +727,15 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
             {
               "book": {
-                "author_id": "1",
-                "name": "New Book"
+                "name": "New Book",
+                "author_id": 1
               }
             }
 
@@ -681,8 +774,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -703,7 +796,7 @@
             {
               "errors": [
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Author must exist",
                   "source": {
                     "parameter": "author",
@@ -711,7 +804,7 @@
                   }
                 },
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -726,8 +819,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -748,7 +841,7 @@
             {
               "errors": [
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Author must exist",
                   "source": {
                     "parameter": "author",
@@ -756,7 +849,7 @@
                   }
                 },
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -776,8 +869,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -822,8 +915,8 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
     + Body
 
@@ -844,7 +937,7 @@
             {
               "errors": [
                 {
-                  "title": "translation missing: en.json_api.errors.unprocessable_entity.title",
+                  "title": "Validation errors",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -864,7 +957,7 @@
 
     + Headers
 
-            Accept: application/json
-            Content-Type: application/x-www-form-urlencoded
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
 
 + Response 204

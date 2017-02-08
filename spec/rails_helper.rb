@@ -39,6 +39,7 @@ RSpec.configure do |config|
 
   # This helper solves the warning issue when generating documentation
   require 'helpers/api'
+  config.include Helpers::Api
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

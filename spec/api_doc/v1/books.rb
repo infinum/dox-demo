@@ -7,6 +7,7 @@ module ApiDoc
         resource 'Books' do
           endpoint '/books'
           group 'Books'
+          desc 'books.md'
         end
       end
 

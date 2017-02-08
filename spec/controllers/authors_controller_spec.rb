@@ -12,11 +12,6 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     { name: "" }
   }
 
-  before {
-    # Set request header so we don't get warnings when we generate documentation
-    request.accept = "application/json"
-  }
-
   describe "GET #index" do
     include ApiDoc::V1::Authors::Index
 
@@ -59,7 +54,7 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns unprocessable entity" do
+      it "returns unprocessable entity", :dox do
         post :create, params: {author: invalid_attributes}
         expect(response).to have_http_status(422)
       end
@@ -87,7 +82,7 @@ RSpec.describe Api::V1::AuthorsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns unprocessable entity" do
+      it "returns unprocessable entity", :dox do
         put :update, params: {id: author.id, author: invalid_attributes}
         expect(response).to have_http_status(422)
       end
