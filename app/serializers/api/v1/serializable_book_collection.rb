@@ -4,8 +4,7 @@ module Api
       type 'book_collections'
 
       attributes :name
-      has_many :books, class: SerializableBook do
-      end
+      has_many :books, class: SerializableBook
     end
   end
 end

@@ -6,8 +6,10 @@ GIT
       rails (>= 4.0)
       rspec-core
 
-PATH
-  remote: /Users/nevenrakonic/projects/json_api_responders
+GIT
+  remote: https://github.com/infinum/json_api_responders.git
+  revision: 2f825f4cc678e6bc2a0cf585a130610b5ccca899
+  branch: feature/jsonapi-rails-support
   specs:
     json_api_responders (2.2.0)
 
@@ -193,4 +195,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.14.3
+   1.14.5

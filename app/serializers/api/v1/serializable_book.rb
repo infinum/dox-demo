@@ -4,11 +4,9 @@ module Api
       type 'books'
       attributes :name
 
-      belongs_to :author, class: SerializableAuthor do
-      end
+      belongs_to :author, class: SerializableAuthor
 
-      belongs_to :book_collection, class: SerializableBookCollection do
-      end
+      belongs_to :book_collection, class: SerializableBookCollection
     end
   end
 end

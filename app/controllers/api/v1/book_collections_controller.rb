@@ -1,48 +1,37 @@
 module Api
   module V1
     class BookCollectionsController < ApplicationController
-      before_action :set_book_collection, only: [:show, :update, :destroy]
-
-      # GET /book_collections
       def index
-        book_collections = BookCollection.all
-        respond_with book_collections, class: SerializableBookCollection
+        respond_with BookCollection.all, class: serializer
       end
 
-      # GET /book_collections/1
       def show
-         respond_with @book_collection, class: SerializableBookCollection, include: [:books]
+        respond_with BookCollection.find(params[:id]), class: serializer, include: [:books]
       end
 
-      # POST /book_collections
       def create
-        book_collection = BookCollection.new(book_collection_params)
-        book_collection.save
-        respond_with book_collection, class: SerializableBookCollection
+        respond_with BookCollection.create(book_collection_params), class: serializer
       end
 
-      # PATCH/PUT /book_collections/1
       def update
-        @book_collection.update(book_collection_params)
-        respond_with @book_collection, class: SerializableBookCollection
+        book_collection = BookCollection.find(params[:id])
+        book_collection.update(book_collection_params)
+        respond_with book_collection, class: serializer
       end
 
-      # DELETE /book_collections/1
       def destroy
-        @book_collection.destroy
-        respond_with 204
+        respond_with BookCollection.find(params[:id]).destroy
       end
 
       private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_book_collection
-          @book_collection = BookCollection.find(params[:id])
-        end
 
-        # Only allow a trusted parameter "white list" through.
-        def book_collection_params
-          params.require(:book_collection).permit(:name)
-        end
+      def book_collection_params
+        params.require(:book_collection).permit(:name)
+      end
+
+      def serializer
+        SerializableBookCollection
+      end
     end
   end
 end

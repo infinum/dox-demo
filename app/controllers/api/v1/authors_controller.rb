@@ -1,48 +1,37 @@
 module Api
   module V1
     class AuthorsController < ApplicationController
-      before_action :set_author, only: [:show, :update, :destroy]
-
-      # GET /authors
       def index
-        authors = Author.all
-        respond_with authors, class: SerializableAuthor
+        respond_with Author.all, class: serializer
       end
 
-      # GET /authors/1
       def show
-        respond_with @author, class: SerializableAuthor, include: [:books]
+        respond_with Author.find(params[:id]), class: serializer, include: [:books]
       end
 
-      # POST /authors
       def create
-        author = Author.new(author_params)
-        author.save
-        respond_with author, class: SerializableAuthor
+        respond_with Author.create(author_params), class: serializer
       end
 
-      # PATCH/PUT /authors/1
       def update
-        @author.update(author_params)
-        respond_with @author, class: SerializableAuthor
+        author = Author.find(params[:id])
+        author.update(author_params)
+        respond_with author, class: serializer
       end
 
-      # DELETE /authors/1
       def destroy
-        @author.destroy
-        respond_with 204
+        respond_with Author.find(params[:id]).destroy
       end
 
       private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_author
-          @author = Author.find(params[:id])
-        end
 
-        # Only allow a trusted parameter "white list" through.
-        def author_params
-          params.require(:author).permit(:name)
-        end
+      def author_params
+        params.require(:author).permit(:name)
+      end
+
+      def serializer
+        SerializableAuthor
+      end
     end
   end
 end
