@@ -11,7 +11,7 @@ RSpec.describe Book, type: :model do
       let(:other_books) { create_list(:book, 3, author: other_author) }
 
       it 'returns books by author' do
-        expect(Book.author(author.id)).to eq books
+        expect(Book.authored_by(author.id)).to eq books
       end
     end
   end

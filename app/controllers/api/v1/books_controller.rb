@@ -2,7 +2,7 @@ module Api
   module V1
     class BooksController < ApplicationController
       def index
-        books = params[:author_id].present? ? books.author(params[:author_id]) : Book.all
+        books = params[:author_id].present? ? books.authored_by(params[:author_id]) : Book.all
         respond_with books, class: serializer
       end
 
