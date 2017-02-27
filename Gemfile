@@ -5,18 +5,18 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.1'
-gem 'sqlite3'
-gem 'puma', '~> 3.0'
+gem 'dox', require: false, github: 'infinum/dox'
 gem 'jsonapi-rails'
 gem 'json_api_responders', github: 'infinum/json_api_responders', branch: 'feature/jsonapi-rails-support'
-gem 'dox', require: false, github: 'infinum/dox'
+gem 'puma', '~> 3.0'
+gem 'rails', '~> 5.0.1'
+gem 'sqlite3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
