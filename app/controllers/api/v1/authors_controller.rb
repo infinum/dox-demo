@@ -1,6 +1,8 @@
 module Api
   module V1
     class AuthorsController < ApplicationController
+      deserializable_resource :author, only: [:create, :update]
+
       def index
         respond_with Author.all, class: serializer
       end

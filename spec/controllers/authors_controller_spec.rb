@@ -35,8 +35,18 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
   describe 'POST #create' do
     include ApiDoc::V1::Authors::Create
     context 'with valid params' do
+      let(:json_api_attrs) do
+        {
+          data: {
+            type: 'authors',
+            attributes: {
+              name: 'Author name'
+            }
+          }
+        }
+      end
       it 'creates a new Author', :dox do
-        expect { post :create, params: { author: valid_attributes } }.to change(Author, :count).by(1)
+        expect { post :create, params: json_api_attrs }.to change(Author, :count).by(1)
       end
 
       it 'returns 201 status' do
