@@ -26,7 +26,7 @@ module Api
       private
 
       def book_collection_params
-        params.require(:book_collection).permit(:name)
+        deserialized_params(:name)
       end
 
       def serializer

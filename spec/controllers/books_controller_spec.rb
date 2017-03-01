@@ -4,8 +4,8 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
   include ApiDoc::V1::Books::Api
   let(:author) { create(:author) }
   let!(:book) { create(:book, author: author) }
-  let(:valid_attributes) { { name: 'New Book', author_id: author.id } }
-  let(:invalid_attributes) { { name: '' } }
+  let(:valid_attributes) { json_api_attrs_for(:book, name: 'New Book', author_id: author.id) }
+  let(:invalid_attributes) { json_api_attrs_for(:book, name: '') }
 
   describe 'GET #index' do
     include ApiDoc::V1::Books::Index
@@ -36,27 +36,23 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Create
     context 'with valid params' do
       it 'creates a new book', :dox do
-        expect do
-          post :create, params: { book: valid_attributes }
-        end.to change(Book, :count).by(1)
+        expect { post :create, params: valid_attributes }.to change(Book, :count).by(1)
       end
 
       it 'returns 201 status' do
-        post :create, params: { book: valid_attributes }
+        post :create, params: valid_attributes
         expect(response).to have_http_status(201)
       end
     end
 
     context 'with invalid params', :dox do
       it 'returns unprocessable entity' do
-        post :create, params: { book: invalid_attributes }
+        post :create, params: invalid_attributes
         expect(response).to have_http_status(422)
       end
 
       it "doesn't create a new book" do
-        expect do
-          post :create, params: { book: invalid_attributes }
-        end.to_not change(Book, :count)
+        expect { post :create, params: invalid_attributes }.to_not change(Book, :count)
       end
     end
   end
@@ -65,19 +61,19 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Update
     context 'with valid params' do
       it 'updates the requested book', :dox do
-        put :update, params: { id: book.id, book: { name: 'New Book' } }
+        put :update, params: update_params_for(book, name: 'New Book')
         expect(book.reload.name).to eq 'New Book'
       end
 
       it 'returns 200 status' do
-        put :update, params: { id: book.id, book: valid_attributes }
+        put :update, params: update_params_for(book, name: 'New Book')
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'with invalid params' do
       it 'returns unprocessable entity', :dox do
-        put :update, params: { id: book.id, book: invalid_attributes }
+        put :update, params: update_params_for(book, name: '')
         expect(response).to have_http_status(422)
       end
     end

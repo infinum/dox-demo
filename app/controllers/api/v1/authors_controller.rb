@@ -1,8 +1,6 @@
 module Api
   module V1
     class AuthorsController < ApplicationController
-      deserializable_resource :author, only: [:create, :update]
-
       def index
         respond_with Author.all, class: serializer
       end
@@ -28,7 +26,7 @@ module Api
       private
 
       def author_params
-        params.require(:author).permit(:name)
+        deserialized_params(:name)
       end
 
       def serializer
