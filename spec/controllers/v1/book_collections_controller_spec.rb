@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Api::V1::BookCollectionsController, api: true, type: :controller do
   include ApiDoc::V1::BookCollections::Api
   let!(:book_collection) { create(:book_collection) }
