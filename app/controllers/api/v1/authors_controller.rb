@@ -26,7 +26,7 @@ module Api
       private
 
       def author_params
-        deserialized_params(:name)
+        deserialized_params.permit(:name)
       end
 
       def serializer
