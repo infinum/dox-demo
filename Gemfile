@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'dox', require: false, github: 'infinum/dox'
+
 gem 'jsonapi-rails'
 gem 'json_api_responders', github: 'infinum/json_api_responders', branch: 'feature/jsonapi-rails-support'
 gem 'puma', '~> 3.0'
@@ -14,9 +14,7 @@ gem 'sqlite3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'factory_girl_rails'
   gem 'pry-rails'
-  gem 'rspec-rails'
 end
 
 group :development do
@@ -26,7 +24,11 @@ group :development do
 end
 
 group :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'dox', require: false,  :github => 'infinum/dox',
+  :branch => 'dev'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
