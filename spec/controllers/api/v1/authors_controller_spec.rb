@@ -1,8 +1,8 @@
 RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
   include ApiDoc::V1::Authors::Api
   let!(:author) { create(:author) }
-  let(:valid_attributes) { json_api_attrs_for(:author) }
-  let(:invalid_attributes) { json_api_attrs_for(:author, name: '') }
+  let(:valid_attributes) { attributes_for(:author) }
+  let(:invalid_attributes) { attributes_for(:author, name: '') }
 
   describe 'GET #index' do
     include ApiDoc::V1::Authors::Index
@@ -34,23 +34,23 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
     include ApiDoc::V1::Authors::Create
     context 'with valid params' do
       it 'creates a new Author', :dox do
-        expect { post :create, params: valid_attributes }.to change(Author, :count).by(1)
+        expect { post :create, body: jsonapi_body(nil, :author, valid_attributes) }.to change(Author, :count).by(1)
       end
 
       it 'returns 201 status' do
-        post :create, params: valid_attributes
+        post :create, body: jsonapi_body(nil, :author, valid_attributes)
         expect(response).to have_http_status(201)
       end
     end
 
     context 'with invalid params' do
       it 'returns unprocessable entity', :dox do
-        post :create, params: invalid_attributes
+        post :create,  body: jsonapi_body(nil, :author, invalid_attributes)
         expect(response).to have_http_status(422)
       end
 
       it "doesn't create a new author" do
-        expect { post :create, params: invalid_attributes }.to_not change(Author, :count)
+        expect { post :create, body: jsonapi_body(nil, :author, invalid_attributes) }.to_not change(Author, :count)
       end
     end
   end
@@ -59,19 +59,19 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
     include ApiDoc::V1::Authors::Update
     context 'with valid params' do
       it 'updates the requested author', :dox do
-        put :update, params: update_params_for(author, name: 'New Author')
+        put :update, params: { id: author.id }, body: jsonapi_body(author.id, :author, name: 'New Author')
         expect(author.reload.name).to eq 'New Author'
       end
 
       it 'returns 200 status' do
-        put :update, params: update_params_for(author, name: 'New Author')
+        put :update, params: { id: author.id }, body: jsonapi_body(author.id, :author, name: 'New Author')
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'with invalid params' do
       it 'returns unprocessable entity', :dox do
-        put :update, params: update_params_for(author, name: '')
+        put :update, params: { id: author.id }, body: jsonapi_body(author.id, :author, name: '')
         expect(response).to have_http_status(422)
       end
     end
