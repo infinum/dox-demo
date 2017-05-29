@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'jsonapi-rails'
 gem 'json_api_responders', github: 'infinum/json_api_responders', branch: 'feature/jsonapi-rails-support'
 gem 'puma', '~> 3.0'
@@ -13,14 +12,15 @@ gem 'rails', '5.0.2'
 gem 'sqlite3'
 
 group :development, :test do
+  gem 'apiaryio', '0.7.0', git: 'https://github.com/infinum/apiary-client.git'
   gem 'byebug', platform: :mri
   gem 'pry-rails'
 end
 
 group :development do
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 group :test do
