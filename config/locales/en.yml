@@ -22,5 +22,15 @@
 en:
   json_api:
     errors:
+      not_found:
+        title: Not found
+        detail: Resource not found
+      forbidden:
+        title: Unauthorized
+        detail: User is not authorized to use this resource
       unprocessable_entity:
-        title: 'Validation errors'
+        title: Unprocessable Entity
+        details: Cannot process request
+      conflict:
+        title: Invalid Attribute
+        details: Something is missing
