@@ -9,8 +9,8 @@ module Helpers
     end
 
     def accept_json_api!
-      request.headers[:Accept] = 'application/json'
-      request.headers.merge! 'Content-Type' => 'application/json'
+      request.headers[:Accept] = 'application/vnd.api+json'
+      request.headers.merge! 'Content-Type' => 'application/vnd.api+json'
     end
   end
 end
