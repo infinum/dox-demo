@@ -8,6 +8,10 @@ module ApiDoc
           endpoint '/authors'
           group 'Authors'
         end
+
+        group 'Authors' do
+          desc 'Authors group'
+        end
       end
 
       document :index do
