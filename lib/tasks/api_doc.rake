@@ -5,11 +5,8 @@ namespace :api do
       require 'rspec/core/rake_task'
 
       RSpec::Core::RakeTask.new(:api_spec) do |t|
-        t.rspec_opts = "spec/controllers/api/v1/* \
-          -f Dox::Formatter \
-          --order defined \
-          --tag apidoc \
-          --out public/api/docs/v1/apispec.md"
+        t.pattern = 'spec/controllers/api/v1/'
+        t.rspec_opts = "-f Dox::Formatter --order defined --tag apidoc --out public/api/docs/v1/apispec.md"
       end
 
       Rake::Task['api_spec'].invoke
@@ -24,7 +21,7 @@ namespace :api do
     end
 
     task publish: :md do
-      `apiary publish --path=public/api/docs/v1/apispec.md --api-name=dox-demo`
+      `apiary publish --path=public/api/docs/v1/apispec.md --api-name=doxdemo`
     end
   end
 end
