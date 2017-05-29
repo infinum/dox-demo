@@ -16,7 +16,7 @@ namespace :api do
     end
 
     task html: :md do
-      `aglio --include-path / -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html`
+      `aglio -i public/api/docs/v1/apispec.md -o public/api/docs/v1/index.html`
     end
 
     task open: :html do
