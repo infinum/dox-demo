@@ -1,5 +1,3 @@
-FORMAT 1A
-
 # Dox Example
 
 This api is implemented according to the JSON API spec.
