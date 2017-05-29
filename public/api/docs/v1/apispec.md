@@ -9,7 +9,7 @@ If you want to filter your query, you can do so by setting the supported filter 
 - `?author_id=24`
 
 # Group Authors
-
+Authors group
 
 ## Authors [/authors]
 
@@ -126,8 +126,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "author": {
-                "name": "Author_5"
+              "data": {
+                "type": "author",
+                "attributes": {
+                  "name": "Author_5"
+                }
               }
             }
 
@@ -167,8 +170,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "author": {
-                "name": ""
+              "data": {
+                "type": "author",
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -183,7 +189,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -209,8 +215,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "author": {
-                "name": "New Author"
+              "data": {
+                "type": "author",
+                "id": 1,
+                "attributes": {
+                  "name": "New Author"
+                }
               }
             }
 
@@ -250,8 +260,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "author": {
-                "name": ""
+              "data": {
+                "type": "author",
+                "id": 1,
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -266,7 +280,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -409,8 +423,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book_collection": {
-                "name": "Book_collection_5"
+              "data": {
+                "type": "book_collection",
+                "attributes": {
+                  "name": "Book_collection_5"
+                }
               }
             }
 
@@ -450,8 +467,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book_collection": {
-                "name": ""
+              "data": {
+                "type": "book_collection",
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -466,7 +486,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -492,8 +512,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book_collection": {
-                "name": "New Book Collection"
+              "data": {
+                "type": "book_collection",
+                "id": 1,
+                "attributes": {
+                  "name": "New Book Collection"
+                }
               }
             }
 
@@ -533,8 +557,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book_collection": {
-                "name": ""
+              "data": {
+                "type": "book_collection",
+                "id": 1,
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -549,7 +577,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -670,7 +698,7 @@ If you want to filter your query, you can do so by setting the supported filter 
                   "id": "1",
                   "type": "authors",
                   "attributes": {
-                    "name": "Author_17"
+                    "name": "Author_16"
                   },
                   "relationships": {
                     "books": {
@@ -684,7 +712,7 @@ If you want to filter your query, you can do so by setting the supported filter 
                   "id": "1",
                   "type": "book_collections",
                   "attributes": {
-                    "name": "Book_collection_17"
+                    "name": "Book_collection_16"
                   },
                   "relationships": {
                     "books": {
@@ -733,9 +761,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book": {
-                "name": "New Book",
-                "author_id": 1
+              "data": {
+                "type": "book",
+                "attributes": {
+                  "name": "New Book",
+                  "author_id": 1
+                }
               }
             }
 
@@ -780,8 +811,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book": {
-                "name": ""
+              "data": {
+                "type": "book",
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -796,7 +830,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Author must exist",
                   "source": {
                     "parameter": "author",
@@ -804,7 +838,7 @@ If you want to filter your query, you can do so by setting the supported filter 
                   }
                 },
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -825,8 +859,11 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book": {
-                "name": ""
+              "data": {
+                "type": "book",
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -841,7 +878,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Author must exist",
                   "source": {
                     "parameter": "author",
@@ -849,7 +886,7 @@ If you want to filter your query, you can do so by setting the supported filter 
                   }
                 },
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
@@ -875,8 +912,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book": {
-                "name": "New Book"
+              "data": {
+                "type": "book",
+                "id": 1,
+                "attributes": {
+                  "name": "New Book"
+                }
               }
             }
 
@@ -921,8 +962,12 @@ If you want to filter your query, you can do so by setting the supported filter 
     + Body
 
             {
-              "book": {
-                "name": ""
+              "data": {
+                "type": "book",
+                "id": 1,
+                "attributes": {
+                  "name": ""
+                }
               }
             }
 
@@ -937,7 +982,7 @@ If you want to filter your query, you can do so by setting the supported filter 
             {
               "errors": [
                 {
-                  "title": "Validation errors",
+                  "title": "Unprocessable Entity",
                   "detail": "Name can't be blank",
                   "source": {
                     "parameter": "name",
