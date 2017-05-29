@@ -5,6 +5,14 @@ GIT
   specs:
     json_api_responders (2.2.0)
 
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: ead87017a6c15adce66a87dce8ee2ece91d0d27c
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -145,8 +153,6 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    shoulda-matchers (3.1.1)
-      activesupport (>= 4.0.0)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -183,7 +189,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (= 5.0.2)
   rspec-rails
-  shoulda-matchers
+  shoulda-matchers!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
