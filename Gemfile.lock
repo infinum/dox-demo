@@ -1,15 +1,6 @@
 GIT
-  remote: https://github.com/infinum/dox.git
-  revision: ea80e9203fa9da775c244021316cef5bc79cfc8c
-  branch: dev
-  specs:
-    dox (1.0.0.alpha)
-      rails (>= 4.0)
-      rspec-core
-
-GIT
   remote: https://github.com/infinum/json_api_responders.git
-  revision: 2f825f4cc678e6bc2a0cf585a130610b5ccca899
+  revision: e4d02733d46b05f675ca587ac11d8819bf8a4a6e
   branch: feature/jsonapi-rails-support
   specs:
     json_api_responders (2.2.0)
@@ -60,51 +51,54 @@ GEM
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
+    dox (1.0.0)
+      rails (>= 4.0)
+      rspec-core
     erubis (2.7.0)
     factory_girl (4.8.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    ffi (1.9.17)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    ffi (1.9.18)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     i18n (0.8.1)
     jsonapi-deserializable (0.1.1)
       jsonapi-parser (= 0.1.1)
     jsonapi-parser (0.1.1)
-    jsonapi-rails (0.1.1)
-      jsonapi-rb (= 0.1.1)
-    jsonapi-rb (0.1.1)
-      jsonapi-deserializable (= 0.1.1)
-      jsonapi-serializable (= 0.1.1)
-    jsonapi-renderer (0.1.1)
-    jsonapi-serializable (0.1.1)
-      jsonapi-renderer (= 0.1.1)
+    jsonapi-rails (0.1.2)
+      jsonapi-rb (~> 0.1)
+    jsonapi-rb (0.1.2)
+      jsonapi-deserializable (~> 0.1)
+      jsonapi-serializable (~> 0.1)
+    jsonapi-renderer (0.1.2)
+    jsonapi-serializable (0.1.3)
+      jsonapi-renderer (~> 0.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.10.1)
-    nio4r (2.0.0)
-    nokogiri (1.7.0.1)
+    minitest (5.10.2)
+    nio4r (2.1.0)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rails (0.3.4)
-      pry (>= 0.9.10)
-    puma (3.7.0)
-    rack (2.0.1)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
+    puma (3.8.2)
+    rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -119,9 +113,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.2)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.2)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.0.2)
@@ -134,27 +128,27 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    rspec-core (3.5.4)
-      rspec-support (~> 3.5.0)
-    rspec-expectations (3.5.0)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-mocks (3.5.0)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-rails (3.5.2)
+      rspec-support (~> 3.6.0)
+    rspec-rails (3.6.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
-      rspec-support (~> 3.5.0)
-    rspec-support (3.5.0)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
     slop (3.6.0)
-    spring (2.0.1)
+    spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -169,7 +163,7 @@ GEM
     sqlite3 (1.3.13)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tzinfo (1.2.2)
+    tzinfo (1.2.3)
       thread_safe (~> 0.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -180,14 +174,14 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  dox!
+  dox
   factory_girl_rails
   json_api_responders!
   jsonapi-rails
   listen (~> 3.0.5)
   pry-rails
   puma (~> 3.0)
-  rails (~> 5.0.1)
+  rails (= 5.0.2)
   rspec-rails
   shoulda-matchers
   spring
@@ -196,4 +190,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.14.5
+   1.14.6
