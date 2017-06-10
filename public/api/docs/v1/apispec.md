@@ -698,7 +698,7 @@ Authors group
                   "id": "1",
                   "type": "authors",
                   "attributes": {
-                    "name": "Author_16"
+                    "name": "Author_11"
                   },
                   "relationships": {
                     "books": {
@@ -712,7 +712,7 @@ Authors group
                   "id": "1",
                   "type": "book_collections",
                   "attributes": {
-                    "name": "Book_collection_16"
+                    "name": "Book_collection_11"
                   },
                   "relationships": {
                     "books": {
