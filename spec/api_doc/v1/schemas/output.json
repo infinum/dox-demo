@@ -1,0 +1,1018 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dox Example",
+    "description": "This api is implemented according to the JSON API spec.\n\n### Filter\n\nIf you want to filter your query, you can do so by setting the supported filter parameters in the following way:\n\n- `?author_id=24`",
+    "contact": {
+    },
+    "version": "2.0"
+  },
+  "paths": {
+    "/api/v1/authors": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Returns a list of authors",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "type": "authors",
+                      "attributes": {
+                        "name": "Author_1"
+                      },
+                      "relationships": {
+                        "books": {
+                          "meta": {
+                            "included": false
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "Returns unprocessable entity",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "author",
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/authors"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "2",
+                    "type": "authors",
+                    "attributes": {
+                      "name": "Author_5"
+                    },
+                    "relationships": {
+                      "books": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/authors/{id}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Does not find an author",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "authors",
+                    "attributes": {
+                      "name": "Author_2"
+                    },
+                    "relationships": {
+                      "books": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "detail": "Couldn't find Author with 'id'=invalid_id"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Returns unprocessable entity",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "author",
+                  "id": 1,
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/authors"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "authors",
+                    "attributes": {
+                      "name": "New Author"
+                    },
+                    "relationships": {
+                      "books": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/authors"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authors"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Deletes the requested author",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "author",
+                  "id": 1,
+                  "attributes": {
+                    "name": "New Author"
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/authors"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/book_collections": {
+      "get": {
+        "tags": [
+          "Book Collections"
+        ],
+        "summary": "Returns book collections",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "type": "book_collections",
+                      "attributes": {
+                        "name": "Book_collection_1"
+                      },
+                      "relationships": {
+                        "books": {
+                          "meta": {
+                            "included": false
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Book Collections"
+        ],
+        "summary": "Returns unprocessable entity",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "book_collection",
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "2",
+                    "type": "book_collections",
+                    "attributes": {
+                      "name": "Book_collection_5"
+                    },
+                    "relationships": {
+                      "books": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/book_collections/{id}": {
+      "get": {
+        "tags": [
+          "Book Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Does not find a book collection",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "book_collections",
+                    "attributes": {
+                      "name": "Book_collection_2"
+                    },
+                    "relationships": {
+                      "books": {
+                        "data": [
+
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "detail": "Couldn't find BookCollection with 'id'=invalid_id"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Book Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Returns unprocessable entity",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "book_collection",
+                  "id": 1,
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "book_collections",
+                    "attributes": {
+                      "name": "New Book Collection"
+                    },
+                    "relationships": {
+                      "books": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Book Collections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Deletes the requested book collection",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/books": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Returns books",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "type": "books",
+                      "attributes": {
+                        "name": "Book_1"
+                      },
+                      "relationships": {
+                        "author": {
+                          "meta": {
+                            "included": false
+                          }
+                        },
+                        "book_collection": {
+                          "meta": {
+                            "included": false
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "Doesn't create a new book",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "book",
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/books"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "2",
+                    "type": "books",
+                    "attributes": {
+                      "name": "New Book"
+                    },
+                    "relationships": {
+                      "author": {
+                        "meta": {
+                          "included": false
+                        }
+                      },
+                      "book_collection": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Author must exist",
+                      "source": {
+                        "parameter": "author",
+                        "pointer": "data/attributes/author"
+                      }
+                    },
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/books/{id}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Does not return a book",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "books",
+                    "attributes": {
+                      "name": "Book_2"
+                    },
+                    "relationships": {
+                      "author": {
+                        "data": {
+                          "type": "authors",
+                          "id": "1"
+                        }
+                      },
+                      "book_collection": {
+                        "data": {
+                          "type": "book_collections",
+                          "id": "1"
+                        }
+                      }
+                    }
+                  },
+                  "included": [
+                    {
+                      "id": "1",
+                      "type": "authors",
+                      "attributes": {
+                        "name": "Author_16"
+                      },
+                      "relationships": {
+                        "books": {
+                          "meta": {
+                            "included": false
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "id": "1",
+                      "type": "book_collections",
+                      "attributes": {
+                        "name": "Book_collection_16"
+                      },
+                      "relationships": {
+                        "books": {
+                          "meta": {
+                            "included": false
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "detail": "Couldn't find Book with 'id'=invalid_id"
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Returns unprocessable entity",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+              "example": {
+                "data": {
+                  "type": "book",
+                  "id": 1,
+                  "attributes": {
+                    "name": ""
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/books"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "data": {
+                    "id": "1",
+                    "type": "books",
+                    "attributes": {
+                      "name": "New Book"
+                    },
+                    "relationships": {
+                      "author": {
+                        "meta": {
+                          "included": false
+                        }
+                      },
+                      "book_collection": {
+                        "meta": {
+                          "included": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "Content-Type: application/vnd.api+json; charset=utf-8": {
+                "example": {
+                  "errors": [
+                    {
+                      "title": "Unprocessable Entity",
+                      "detail": "Name can't be blank",
+                      "source": {
+                        "parameter": "name",
+                        "pointer": "data/attributes/name"
+                      }
+                    }
+                  ]
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/books"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "required": "required",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "summary": "Deletes the requested book",
+        "request_body": {
+          "content": {
+            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "": {
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "authors": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the author",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "books.json"
+          }
+        }
+      },
+      "books": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Opis2",
+            "type": "string"
+          },
+          "status": {
+            "description": "Opis2",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Authors",
+      "description": ""
+    },
+    {
+      "name": "Book Collections",
+      "description": ""
+    },
+    {
+      "name": "Books",
+      "description": "### Supported filter params\n  - author_id\n"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "Authors",
+      "tags": [
+        "Authors"
+      ]
+    },
+    {
+      "name": "Books",
+      "tags": [
+        "Book Collections",
+        "Books"
+      ]
+    }
+  ]
+}

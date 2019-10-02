@@ -1,0 +1,182 @@
+{
+  "name": "API Title",
+  "terms": null,
+  "contact": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "license": {
+    "name": "",
+    "url": ""
+  },
+  "version": null,
+  "servers": [
+    {
+      "description": "",
+      "uriTemplate": "https://api.example.com",
+      "uriParams": null
+    }
+  ],
+  "tags": [
+    {
+      "name": "Notes",
+      "description": "Group description (also with *Markdown*)\n\n## Important Info\n\nDescriptions may also contain sub-headings and **more Markdown**."
+    },
+    {
+      "name": "Users",
+      "description": "Group description"
+    },
+    {
+      "name": "Tags and Tagging Long Title",
+      "description": "Get or set tags on notes"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Note List",
+      "description": "Note list description\n\n+ Even\n\n+ More\n\n+ Markdown",
+      "uriTemplate": "/notes",
+      "uriParams": null,
+      "uriParamsSchema": null,
+      "actions": [
+        {
+          "name": "Get Notes",
+          "description": "Get a list of notes.",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": null
+        },
+        {
+          "name": "Create New Note",
+          "description": "Create a new note using a title and an optional content body.",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": null
+        }
+      ]
+    },
+    {
+      "name": "Note",
+      "description": "Note description",
+      "uriTemplate": "/notes/{id}{?body}",
+      "uriParams": [
+        {
+          "name": "id",
+          "description": "",
+          "example": "68a5sdf67"
+        }
+      ],
+      "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\"\n  ]\n}",
+      "actions": [
+        {
+          "name": "Get Note",
+          "description": "Get a single note.",
+          "tags": [],
+          "uriParams": [
+            {
+              "name": "body",
+              "description": "",
+              "example": false
+            }
+          ],
+          "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    },\n    \"body\": {\n      \"type\": \"boolean\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\",\n    \"body\"\n  ]\n}"
+        },
+        {
+          "name": "Update a Note",
+          "description": "Update a single note by setting the title and/or body.\n\n::: warning\n\n#### <i class=\"fa fa-warning\"></i> Caution\n\nIf the value for `title` or `body` is `null` or `undefined`, then the corresponding value is not modified on the server. However, if you send an empty string instead then it will **permanently overwrite** the original value.\n:::",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\"\n  ]\n}"
+        },
+        {
+          "name": "Delete a Note",
+          "description": "Delete a single note",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "User List",
+      "description": "A list of users",
+      "uriTemplate": "/users{?name,joinedBefore,joinedAfter,sort,limit}",
+      "uriParams": [
+        {
+          "name": "name",
+          "description": "",
+          "example": "alice"
+        },
+        {
+          "name": "joinedBefore",
+          "description": "",
+          "example": "2011-01-01"
+        },
+        {
+          "name": "joinedAfter",
+          "description": "",
+          "example": "2011-01-01"
+        },
+        {
+          "name": "sort",
+          "description": "",
+          "example": "name"
+        },
+        {
+          "name": "limit",
+          "description": "",
+          "example": "25"
+        }
+      ],
+      "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"joinedBefore\": {\n      \"type\": \"string\"\n    },\n    \"joinedAfter\": {\n      \"type\": \"string\"\n    },\n    \"sort\": {\n      \"type\": \"enum\"\n    },\n    \"limit\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false\n}",
+      "actions": [
+        {
+          "name": "Get users",
+          "description": "Get a list of users. Example:\n\n```no-highlight\nhttps://api.mywebsite.com/users?sort=joined&limit=5\n```",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"joinedBefore\": {\n      \"type\": \"string\"\n    },\n    \"joinedAfter\": {\n      \"type\": \"string\"\n    },\n    \"sort\": {\n      \"type\": \"enum\"\n    },\n    \"limit\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false\n}"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "description": "",
+      "uriTemplate": "/tags",
+      "uriParams": null,
+      "uriParamsSchema": null,
+      "actions": [
+        {
+          "name": "",
+          "description": "Get a list of bars",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": null
+        }
+      ]
+    },
+    {
+      "name": "Get one tag",
+      "description": "Get a single tag",
+      "uriTemplate": "/tags/{id}",
+      "uriParams": [
+        {
+          "name": "id",
+          "description": "",
+          "example": ""
+        }
+      ],
+      "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\"\n  ]\n}",
+      "actions": [
+        {
+          "name": "",
+          "description": "",
+          "tags": [],
+          "uriParams": null,
+          "uriParamsSchema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"string\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"required\": [\n    \"id\"\n  ]\n}"
+        }
+      ]
+    }
+  ]
+}

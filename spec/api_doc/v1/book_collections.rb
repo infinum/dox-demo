@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiDoc
   module V1
     module BookCollections

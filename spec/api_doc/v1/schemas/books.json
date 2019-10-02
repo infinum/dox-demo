@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Opis2",
+      "type": "string"
+    },
+    "status": {
+      "description": "Opis2",
+      "type": "string"
+    }
+  }
+}

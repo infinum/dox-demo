@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiDoc
   module V1
     module Authors
@@ -7,6 +9,7 @@ module ApiDoc
         resource 'Authors' do
           endpoint '/authors'
           group 'Authors'
+          schema 'authors'
         end
 
         group 'Authors' do

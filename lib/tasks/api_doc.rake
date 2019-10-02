@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :api do
   namespace :doc do
     desc 'Generate API documentation markdown'
@@ -6,7 +8,7 @@ namespace :api do
 
       RSpec::Core::RakeTask.new(:api_spec) do |t|
         t.pattern = 'spec/controllers/api/v1/'
-        t.rspec_opts = "-f Dox::Formatter --order defined --tag dox --out public/api/docs/v1/apispec.md"
+        t.rspec_opts = '-f Dox::Formatter --order defined --tag dox --out public/api/docs/v1/apispec.md'
       end
 
       Rake::Task['api_spec'].invoke

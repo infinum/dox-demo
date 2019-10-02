@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiDoc
   module V1
     module Books
@@ -8,6 +10,7 @@ module ApiDoc
           endpoint '/books'
           group 'Books'
           desc 'books.md'
+          schema 'books'
         end
       end
 

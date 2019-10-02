@@ -1,0 +1,300 @@
+{
+  "element": "parseResult",
+  "meta": {},
+  "attributes": {},
+  "content": [
+    {
+      "element": "category",
+      "meta": {
+        "classes": [
+          "api"
+        ],
+        "title": {
+          "element": "string",
+          "meta": {},
+          "attributes": {
+            "sourceMap": [
+              {
+                "element": "sourceMap",
+                "meta": {},
+                "attributes": {},
+                "content": [
+                  [
+                    23,
+                    18
+                  ]
+                ]
+              }
+            ]
+          },
+          "content": "Swagger API"
+        }
+      },
+      "attributes": {},
+      "content": [
+        {
+          "element": "resource",
+          "meta": {},
+          "attributes": {
+            "href": {
+              "element": "string",
+              "meta": {},
+              "attributes": {
+                "sourceMap": [
+                  {
+                    "element": "sourceMap",
+                    "meta": {},
+                    "attributes": {},
+                    "content": [
+                      [
+                        68,
+                        400
+                      ]
+                    ]
+                  }
+                ]
+              },
+              "content": "/fooBar"
+            }
+          },
+          "content": [
+            {
+              "element": "transition",
+              "meta": {},
+              "attributes": {
+                "href": "/fooBar{?someParam}",
+                "hrefVariables": {
+                  "element": "hrefVariables",
+                  "meta": {},
+                  "attributes": {},
+                  "content": [
+                    {
+                      "element": "member",
+                      "meta": {},
+                      "attributes": {
+                        "sourceMap": [
+                          {
+                            "element": "sourceMap",
+                            "meta": {},
+                            "attributes": {},
+                            "content": [
+                              [
+                                147,
+                                67
+                              ]
+                            ]
+                          }
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "meta": {},
+                          "attributes": {},
+                          "content": "someParam"
+                        },
+                        "value": {
+                          "element": "string",
+                          "meta": {},
+                          "attributes": {
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    147,
+                                    67
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": null
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "content": [
+                {
+                  "element": "httpTransaction",
+                  "meta": {},
+                  "attributes": {},
+                  "content": [
+                    {
+                      "element": "httpRequest",
+                      "meta": {},
+                      "attributes": {
+                        "method": {
+                          "element": "string",
+                          "meta": {},
+                          "attributes": {
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    81,
+                                    387
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": "GET"
+                        }
+                      },
+                      "content": []
+                    },
+                    {
+                      "element": "httpResponse",
+                      "meta": {},
+                      "attributes": {
+                        "headers": {
+                          "element": "httpHeaders",
+                          "meta": {},
+                          "attributes": {},
+                          "content": [
+                            {
+                              "element": "member",
+                              "meta": {},
+                              "attributes": {
+                                "sourceMap": [
+                                  {
+                                    "element": "sourceMap",
+                                    "meta": {},
+                                    "attributes": {},
+                                    "content": [
+                                      [
+                                        313,
+                                        36
+                                      ]
+                                    ]
+                                  }
+                                ]
+                              },
+                              "content": {
+                                "key": {
+                                  "element": "string",
+                                  "meta": {},
+                                  "attributes": {},
+                                  "content": "Content-Type"
+                                },
+                                "value": {
+                                  "element": "string",
+                                  "meta": {},
+                                  "attributes": {},
+                                  "content": "application/json"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "statusCode": {
+                          "element": "string",
+                          "meta": {},
+                          "attributes": {
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    233,
+                                    235
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": "200"
+                        }
+                      },
+                      "content": [
+                        {
+                          "element": "copy",
+                          "meta": {},
+                          "attributes": {
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    248,
+                                    32
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": "Successful response"
+                        },
+                        {
+                          "element": "asset",
+                          "meta": {
+                            "classes": [
+                              "messageBody"
+                            ]
+                          },
+                          "attributes": {
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    313,
+                                    36
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": "{\"status\": \"ok\"}"
+                        },
+                        {
+                          "element": "asset",
+                          "meta": {
+                            "classes": [
+                              "messageBodySchema"
+                            ]
+                          },
+                          "attributes": {
+                            "contentType": "application/schema+json",
+                            "sourceMap": [
+                              {
+                                "element": "sourceMap",
+                                "meta": {},
+                                "attributes": {},
+                                "content": [
+                                  [
+                                    360,
+                                    108
+                                  ]
+                                ]
+                              }
+                            ]
+                          },
+                          "content": "{\"type\":\"object\",\"properties\":{\"status\":{\"type\":\"number\"}}}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

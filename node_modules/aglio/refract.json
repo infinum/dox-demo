@@ -1,0 +1,1852 @@
+{
+  "element": "parseResult",
+  "content": [
+    {
+      "element": "category",
+      "meta": {
+        "classes": [
+          "api"
+        ],
+        "title": "API Title"
+      },
+      "attributes": {
+        "meta": [
+          {
+            "element": "member",
+            "meta": {
+              "classes": [
+                "user"
+              ]
+            },
+            "content": {
+              "key": {
+                "element": "string",
+                "content": "FORMAT"
+              },
+              "value": {
+                "element": "string",
+                "content": "1A"
+              }
+            }
+          },
+          {
+            "element": "member",
+            "meta": {
+              "classes": [
+                "user"
+              ]
+            },
+            "content": {
+              "key": {
+                "element": "string",
+                "content": "HOST"
+              },
+              "value": {
+                "element": "string",
+                "content": "https://api.example.com"
+              }
+            }
+          }
+        ]
+      },
+      "content": [
+        {
+          "element": "copy",
+          "content": "[Markdown](http://daringfireball.net/projects/markdown/syntax) **formatted** description.\n\n## Subtitle\n\nAlso Markdown *formatted*. This also includes automatic \"smartypants\" formatting -- hooray!\n\n> \"A quote from another time and place\"\n\nAnother paragraph. Code sample:\n\n```http\nAuthorization: bearer 5262d64b892e8d4341000001\n```\n\nAnd some code with no highlighting:\n\n```no-highlight\nFoo bar baz\n```\n\n1. A list\n\n2. Of items\n\n3. Can be\n\n4. Very useful\n\nHere is a table:\n\nID | Name | Description\n--:| ---- | -----------\n 1 | Foo  | I am a foo.\n 8 | Bar  | I am a bar.\n15 | Baz  | I am a baz.\n\n::: note\n\n## Extensions\n\nSome non-standard Markdown extensions are also supported, such as this informational container, which can also contain **formatting**. Features include:\n\n* Informational block fenced with `::: note` and `:::`\n\n* Warning block fenced with `::: warning` and `:::`\n\n* [x] GitHub-style checkboxes using `[x]` and `[ ]`\n\n* Emoji support :smile: :ship: :cake: using `:smile:` ([cheat sheet](http://www.emoji-cheat-sheet.com/))\n\nThese extensions may change in the future as the [CommonMark specification](http://spec.commonmark.org/) defines a [standard extension syntax](https://github.com/jgm/CommonMark/wiki/Proposed-Extensions).\n:::\n\n<!-- include(example-include.md) -->\n\n"
+        },
+        {
+          "element": "category",
+          "meta": {
+            "classes": [
+              "dataStructures"
+            ]
+          },
+          "content": [
+            {
+              "element": "dataStructure",
+              "content": [
+                {
+                  "element": "object",
+                  "meta": {
+                    "id": "NoteData"
+                  },
+                  "content": [
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Unique identifier"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "id"
+                        },
+                        "value": {
+                          "element": "number",
+                          "content": 1
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Single line description"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "title"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "Grocery list"
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Full description of the note which supports Markdown."
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "body"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "Buy milk"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "element": "dataStructure",
+              "content": [
+                {
+                  "element": "array",
+                  "meta": {
+                    "id": "NoteList"
+                  },
+                  "content": [
+                    {
+                      "element": "NoteData"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "category",
+          "meta": {
+            "classes": [
+              "resourceGroup"
+            ],
+            "title": "Notes"
+          },
+          "content": [
+            {
+              "element": "copy",
+              "content": "Group description (also with *Markdown*)\n\n## Important Info\n\nDescriptions may also contain sub-headings and **more Markdown**.\n\n"
+            },
+            {
+              "element": "resource",
+              "meta": {
+                "title": "Note List"
+              },
+              "attributes": {
+                "href": "/notes"
+              },
+              "content": [
+                {
+                  "element": "copy",
+                  "content": "Note list description\n\n+ Even\n\n+ More\n\n+ Markdown\n\n"
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Get Notes"
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Get a list of notes.\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "dataStructure",
+                              "content": [
+                                {
+                                  "element": "NoteList"
+                                }
+                              ]
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "[\n  {\n    \"id\": 1,\n    \"title\": \"Grocery list\",\n    \"body\": \"Buy milk\"\n  }\n]"
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBodySchema"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/schema+json"
+                              },
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"array\"\n}"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Create New Note"
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Create a new note using a title and an optional content body.\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "with body"
+                          },
+                          "attributes": {
+                            "method": "POST",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"My new note\",\n    \"body\": \"This is the body\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "201"
+                          },
+                          "content": []
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "with body"
+                          },
+                          "attributes": {
+                            "method": "POST",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"My new note\",\n    \"body\": \"This is the body\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "400",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Invalid title\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "without body"
+                          },
+                          "attributes": {
+                            "method": "POST",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"My new note\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "201"
+                          },
+                          "content": []
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "without body"
+                          },
+                          "attributes": {
+                            "method": "POST",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"My new note\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "400",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Invalid title\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "element": "resource",
+              "meta": {
+                "title": "Note"
+              },
+              "attributes": {
+                "href": "/notes/{id}{?body}",
+                "hrefVariables": {
+                  "element": "hrefVariables",
+                  "content": [
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "The note ID"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "id"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "68a5sdf67"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "content": [
+                {
+                  "element": "copy",
+                  "content": "Note description\n\n"
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Get Note"
+                  },
+                  "attributes": {
+                    "hrefVariables": {
+                      "element": "hrefVariables",
+                      "content": [
+                        {
+                          "element": "member",
+                          "meta": {
+                            "description": "Set to `false` to exclude note body content."
+                          },
+                          "attributes": {
+                            "typeAttributes": [
+                              "required"
+                            ]
+                          },
+                          "content": {
+                            "key": {
+                              "element": "string",
+                              "content": "body"
+                            },
+                            "value": {
+                              "element": "boolean",
+                              "content": false
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Get a single note.\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "dataStructure",
+                              "content": [
+                                {
+                                  "element": "NoteData"
+                                }
+                              ]
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n  \"id\": 1,\n  \"title\": \"Grocery list\",\n  \"body\": \"Buy milk\"\n}"
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBodySchema"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/schema+json"
+                              },
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"number\",\n      \"description\": \"Unique identifier\"\n    },\n    \"title\": {\n      \"type\": \"string\",\n      \"description\": \"Single line description\"\n    },\n    \"body\": {\n      \"type\": \"string\",\n      \"description\": \"Full description of the note which supports Markdown.\"\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"title\"\n  ]\n}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "404",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Note not found\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Update a Note"
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Update a single note by setting the title and/or body.\n\n::: warning\n\n#### <i class=\"fa fa-warning\"></i> Caution\n\nIf the value for `title` or `body` is `null` or `undefined`, then the corresponding value is not modified on the server. However, if you send an empty string instead then it will **permanently overwrite** the original value.\n:::\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "PUT",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"Grocery List (Safeway)\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "dataStructure",
+                              "content": [
+                                {
+                                  "element": "NoteData"
+                                }
+                              ]
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n  \"id\": 1,\n  \"title\": \"Grocery list\",\n  \"body\": \"Buy milk\"\n}"
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBodySchema"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/schema+json"
+                              },
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"number\",\n      \"description\": \"Unique identifier\"\n    },\n    \"title\": {\n      \"type\": \"string\",\n      \"description\": \"Single line description\"\n    },\n    \"body\": {\n      \"type\": \"string\",\n      \"description\": \"Full description of the note which supports Markdown.\"\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"title\"\n  ]\n}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "PUT",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"title\": \"Grocery List (Safeway)\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "404",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Note not found\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "delete body"
+                          },
+                          "attributes": {
+                            "method": "PUT",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"body\": \"\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "dataStructure",
+                              "content": [
+                                {
+                                  "element": "NoteData"
+                                }
+                              ]
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n  \"id\": 1,\n  \"title\": \"Grocery list\",\n  \"body\": \"Buy milk\"\n}"
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBodySchema"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/schema+json"
+                              },
+                              "content": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"number\",\n      \"description\": \"Unique identifier\"\n    },\n    \"title\": {\n      \"type\": \"string\",\n      \"description\": \"Single line description\"\n    },\n    \"body\": {\n      \"type\": \"string\",\n      \"description\": \"Full description of the note which supports Markdown.\"\n    }\n  },\n  \"required\": [\n    \"id\",\n    \"title\"\n  ]\n}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "meta": {
+                            "title": "delete body"
+                          },
+                          "attributes": {
+                            "method": "PUT",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"body\": \"\"\n}\n"
+                            }
+                          ]
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "404",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Note not found\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Delete a Note"
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Delete a single note\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "DELETE"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "204"
+                          },
+                          "content": []
+                        }
+                      ]
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "DELETE"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "404",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Request-ID"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "f72fc914"
+                                    }
+                                  }
+                                },
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "X-Response-Time"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "4ms"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "{\n    \"error\": \"Note not found\"\n}\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "category",
+          "meta": {
+            "classes": [
+              "resourceGroup"
+            ],
+            "title": "Users"
+          },
+          "content": [
+            {
+              "element": "copy",
+              "content": "Group description\n\n"
+            },
+            {
+              "element": "resource",
+              "meta": {
+                "title": "User List"
+              },
+              "attributes": {
+                "href": "/users{?name,joinedBefore,joinedAfter,sort,limit}",
+                "hrefVariables": {
+                  "element": "hrefVariables",
+                  "content": [
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Search for a user by name"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "optional"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "name"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "alice"
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Search by join date"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "optional"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "joinedBefore"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "2011-01-01"
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Search by join date"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "optional"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "joinedAfter"
+                        },
+                        "value": {
+                          "element": "string",
+                          "content": "2011-01-01"
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Which field to sort by"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "optional"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "sort"
+                        },
+                        "value": {
+                          "element": "enum",
+                          "attributes": {
+                            "samples": [
+                              [
+                                {
+                                  "element": "string",
+                                  "content": "joined"
+                                }
+                              ]
+                            ],
+                            "default": [
+                              {
+                                "element": "string",
+                                "content": "name"
+                              }
+                            ]
+                          },
+                          "content": [
+                            {
+                              "element": "string",
+                              "content": "name"
+                            },
+                            {
+                              "element": "string",
+                              "content": "joined"
+                            },
+                            {
+                              "element": "string",
+                              "content": "-joined"
+                            },
+                            {
+                              "element": "string",
+                              "content": "age"
+                            },
+                            {
+                              "element": "string",
+                              "content": "-age"
+                            },
+                            {
+                              "element": "string",
+                              "content": "location"
+                            },
+                            {
+                              "element": "string",
+                              "content": "-location"
+                            },
+                            {
+                              "element": "string",
+                              "content": "plan"
+                            },
+                            {
+                              "element": "string",
+                              "content": "-plan"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "The maximum number of users to return, up to `50`"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "optional"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "limit"
+                        },
+                        "value": {
+                          "element": "string",
+                          "attributes": {
+                            "default": "10"
+                          },
+                          "content": "25"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "content": [
+                {
+                  "element": "copy",
+                  "content": "A list of users\n\n"
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": "Get users"
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Get a list of users. Example:\n\n```no-highlight\nhttps://api.mywebsite.com/users?sort=joined&limit=5\n```\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "[\n    {\n        \"name\": \"alice\",\n        \"image\": \"http://example.com/alice.jpg\",\n        \"joined\": \"2013-11-01\"\n    },\n    {\n        \"name\": \"bob\",\n        \"image\": \"http://example.com/bob.jpg\",\n        \"joined\": \"2013-11-02\"\n    }\n]\n"
+                            },
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBodySchema"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/schema+json"
+                              },
+                              "content": "<!-- include(example-schema.json) -->\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "category",
+          "meta": {
+            "classes": [
+              "resourceGroup"
+            ],
+            "title": "Tags and Tagging Long Title"
+          },
+          "content": [
+            {
+              "element": "copy",
+              "content": "Get or set tags on notes\n\n"
+            },
+            {
+              "element": "resource",
+              "meta": {
+                "title": ""
+              },
+              "attributes": {
+                "href": "/tags"
+              },
+              "content": [
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": ""
+                  },
+                  "content": [
+                    {
+                      "element": "copy",
+                      "content": "Get a list of bars\n\n"
+                    },
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200",
+                            "headers": {
+                              "element": "httpHeaders",
+                              "content": [
+                                {
+                                  "element": "member",
+                                  "content": {
+                                    "key": {
+                                      "element": "string",
+                                      "content": "Content-Type"
+                                    },
+                                    "value": {
+                                      "element": "string",
+                                      "content": "application/json"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "content": [
+                            {
+                              "element": "asset",
+                              "meta": {
+                                "classes": [
+                                  "messageBody"
+                                ]
+                              },
+                              "attributes": {
+                                "contentType": "application/json"
+                              },
+                              "content": "[\"tag1\", \"tag2\", \"tag3\"]\n"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "element": "resource",
+              "meta": {
+                "title": "Get one tag"
+              },
+              "attributes": {
+                "href": "/tags/{id}",
+                "hrefVariables": {
+                  "element": "hrefVariables",
+                  "content": [
+                    {
+                      "element": "member",
+                      "meta": {
+                        "description": "Unique tag identifier"
+                      },
+                      "attributes": {
+                        "typeAttributes": [
+                          "required"
+                        ]
+                      },
+                      "content": {
+                        "key": {
+                          "element": "string",
+                          "content": "id"
+                        },
+                        "value": {
+                          "element": "string"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "content": [
+                {
+                  "element": "copy",
+                  "content": "Get a single tag\n\n"
+                },
+                {
+                  "element": "transition",
+                  "meta": {
+                    "title": ""
+                  },
+                  "content": [
+                    {
+                      "element": "httpTransaction",
+                      "content": [
+                        {
+                          "element": "httpRequest",
+                          "attributes": {
+                            "method": "GET"
+                          },
+                          "content": []
+                        },
+                        {
+                          "element": "httpResponse",
+                          "attributes": {
+                            "statusCode": "200"
+                          },
+                          "content": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

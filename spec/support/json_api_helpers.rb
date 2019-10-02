@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JsonApiHelpers
   def jsonapi_body(id, type, attributes, opts = {})
     b = {}.tap do |body|

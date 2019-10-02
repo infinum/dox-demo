@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::V1::BooksController, api: true, type: :controller do
   include ApiDoc::V1::Books::Api
   let(:author) { create(:author) }
@@ -35,7 +37,9 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Create
     context 'with valid params' do
       it 'creates a new book', :dox do
-        expect { post :create, body: jsonapi_body(nil, :book, valid_attributes) }.to change(Book, :count).by(1)
+        expect do
+          post :create, body: jsonapi_body(nil, :book, valid_attributes)
+        end.to change(Book, :count).by(1)
       end
 
       it 'returns 201 status' do
@@ -51,7 +55,9 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
       end
 
       it "doesn't create a new book" do
-        expect { post :create, body: jsonapi_body(nil, :book, invalid_attributes) }.to_not change(Book, :count)
+        expect do
+          post :create, body: jsonapi_body(nil, :book, invalid_attributes)
+        end.to_not change(Book, :count)
       end
     end
   end

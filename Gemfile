@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -5,16 +7,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'json_api_responders'
 gem 'jsonapi-rails'
-gem 'json_api_responders', github: 'infinum/json_api_responders', branch: 'feature/jsonapi-rails-support'
 gem 'puma', '~> 3.0'
 gem 'rails', '5.0.2'
 gem 'sqlite3'
 
 group :development, :test do
-  gem 'apiaryio', '0.7.0', git: 'https://github.com/infinum/apiary-client.git'
   gem 'byebug', platform: :mri
+  gem 'pry-nav'
   gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
@@ -24,10 +27,10 @@ group :development do
 end
 
 group :test do
-  gem 'dox', require: false
+  gem 'dox', require: false, path: '/Users/vjeks/repos/dox'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
