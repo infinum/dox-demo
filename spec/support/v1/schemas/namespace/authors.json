@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Response of author",
+      "type": "string"
+    },
+    "status": {
+      "$ref": "../books.json"
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Dox Example",
-    "description": "This api is implemented according to the JSON API spec.\n\n### Filter\n\nIf you want to filter your query, you can do so by setting the supported filter parameters in the following way:\n\n- `?author_id=24`",
+    "description": "This api is implemented according to the JSON API spec.\n\n### Filter\n\nIf you want to filter your query, you can do so by setting the supported filter parameters in the following way:\n\n- `?author_id=24`\n",
     "contact": {
     },
     "version": "2.0"
@@ -14,9 +14,9 @@
           "Authors"
         ],
         "summary": "Returns a list of authors",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -24,7 +24,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": [
                     {
@@ -44,7 +44,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -55,10 +55,19 @@
         "tags": [
           "Authors"
         ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "Returns unprocessable entity",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "author",
@@ -68,7 +77,7 @@
                 }
               },
               "schema": {
-                "$ref": "#/components/schemas/authors"
+                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
               }
             }
           }
@@ -77,7 +86,7 @@
           "201": {
             "description": "Created",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "2",
@@ -95,7 +104,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -103,7 +112,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -117,7 +126,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -133,17 +142,16 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
             }
           }
         ],
         "summary": "Does not find an author",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -151,7 +159,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -169,7 +177,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -177,7 +185,7 @@
           "404": {
             "description": "Not Found",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -186,7 +194,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -200,17 +208,23 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "summary": "Returns unprocessable entity",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "author",
@@ -221,7 +235,7 @@
                 }
               },
               "schema": {
-                "$ref": "#/components/schemas/authors"
+                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
               }
             }
           }
@@ -230,7 +244,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -248,7 +262,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -256,7 +270,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -270,7 +284,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/authors"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
                 }
               }
             }
@@ -284,17 +298,23 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "summary": "Deletes the requested author",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "author",
@@ -305,7 +325,7 @@
                 }
               },
               "schema": {
-                "$ref": "#/components/schemas/authors"
+                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
               }
             }
           }
@@ -314,7 +334,7 @@
           "204": {
             "description": "No Content",
             "content": {
-              "": {
+              "[]": {
               }
             }
           }
@@ -327,9 +347,9 @@
           "Book Collections"
         ],
         "summary": "Returns book collections",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -337,7 +357,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": [
                     {
@@ -365,10 +385,19 @@
         "tags": [
           "Book Collections"
         ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "Returns unprocessable entity",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "book_collection",
@@ -384,7 +413,7 @@
           "201": {
             "description": "Created",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "2",
@@ -407,7 +436,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -434,17 +463,16 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
             }
           }
         ],
         "summary": "Does not find a book collection",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -452,7 +480,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -475,7 +503,7 @@
           "404": {
             "description": "Not Found",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -495,17 +523,23 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "summary": "Returns unprocessable entity",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "book_collection",
@@ -522,7 +556,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -545,7 +579,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -570,17 +604,16 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
             }
           }
         ],
         "summary": "Deletes the requested book collection",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -588,7 +621,7 @@
           "204": {
             "description": "No Content",
             "content": {
-              "": {
+              "[]": {
               }
             }
           }
@@ -601,9 +634,9 @@
           "Books"
         ],
         "summary": "Returns books",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -611,7 +644,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": [
                     {
@@ -636,7 +669,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -647,10 +680,26 @@
         "tags": [
           "Books"
         ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "author_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "summary": "Doesn't create a new book",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "book",
@@ -660,7 +709,7 @@
                 }
               },
               "schema": {
-                "$ref": "#/components/schemas/books"
+                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/books.json"
               }
             }
           }
@@ -669,7 +718,7 @@
           "201": {
             "description": "Created",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "2",
@@ -692,7 +741,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -700,7 +749,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -722,7 +771,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -738,17 +787,23 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "author_id",
             "in": "header",
-            "required": "required",
             "schema": {
               "type": "number"
             }
           }
         ],
         "summary": "Does not return a book",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -756,7 +811,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -811,7 +866,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -819,7 +874,7 @@
           "404": {
             "description": "Not Found",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -828,7 +883,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -842,17 +897,23 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
         "summary": "Returns unprocessable entity",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
               "example": {
                 "data": {
                   "type": "book",
@@ -863,7 +924,7 @@
                 }
               },
               "schema": {
-                "$ref": "#/components/schemas/books"
+                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/books.json"
               }
             }
           }
@@ -872,7 +933,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "data": {
                     "id": "1",
@@ -895,7 +956,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -903,7 +964,7 @@
           "422": {
             "description": "Unprocessable Entity",
             "content": {
-              "Content-Type: application/vnd.api+json; charset=utf-8": {
+              "application/vnd.api+json; charset=utf-8": {
                 "example": {
                   "errors": [
                     {
@@ -917,7 +978,7 @@
                   ]
                 },
                 "schema": {
-                  "$ref": "#/components/schemas/books"
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
                 }
               }
             }
@@ -931,17 +992,16 @@
         "parameters": [
           {
             "name": "id",
-            "in": "header",
-            "required": "required",
+            "in": "path",
             "schema": {
               "type": "number"
             }
           }
         ],
         "summary": "Deletes the requested book",
-        "request_body": {
+        "requestBody": {
           "content": {
-            "Accept: application/vnd.api+json\nContent-Type: application/vnd.api+json": {
+            "application/vnd.api+json": {
             }
           }
         },
@@ -949,38 +1009,9 @@
           "204": {
             "description": "No Content",
             "content": {
-              "": {
+              "[]": {
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "authors": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the author",
-            "type": "string"
-          },
-          "status": {
-            "$ref": "books.json"
-          }
-        }
-      },
-      "books": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "Opis2",
-            "type": "string"
-          },
-          "status": {
-            "description": "Opis2",
-            "type": "string"
           }
         }
       }
@@ -989,7 +1020,7 @@
   "tags": [
     {
       "name": "Authors",
-      "description": ""
+      "description": "Normal desc"
     },
     {
       "name": "Book Collections",

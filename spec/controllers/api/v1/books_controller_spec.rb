@@ -20,7 +20,7 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Show
     context 'valid params' do
       it 'returns a book', :dox do
-        get :show, params: { id: book.id }
+        get :show, params: { id: book.id, author_id: author.id }
         expect(response).to have_http_status(:ok)
       end
     end

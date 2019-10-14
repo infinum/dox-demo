@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Dox Example",
-    "description": "This api is implemented according to the JSON API spec.\n\n### Filter\n\nIf you want to filter your query, you can do so by setting the supported filter parameters in the following way:\n\n- `?author_id=24`",
+    "description": "description.md",
     "contact": {},
     "version": "2.0"
   }

@@ -84,6 +84,7 @@ end
 Dox.configure do |config|
   config.header_file_path = Rails.root.join('spec/api_doc/v1/descriptions/header.json')
   config.desc_folder_path = Rails.root.join('spec/api_doc/v1/descriptions')
-  config.schema_folder_path = Rails.root.join('spec/api_doc/v1/schemas')
+  config.schema_request_folder_path = Rails.root.join('spec/api_doc/v1/schemas')
+  config.schema_response_folder_path = Rails.root.join('spec/support/v1/schemas')
   config.headers_whitelist = ['Accept']
 end

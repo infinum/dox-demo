@@ -9,7 +9,8 @@ module ApiDoc
         resource 'Authors' do
           endpoint '/authors'
           group 'Authors'
-          schema 'authors'
+          desc 'Normal desc'
+          schema 'namespace/authors'
         end
 
         group 'Authors' do
