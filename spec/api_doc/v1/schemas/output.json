@@ -15,20 +15,21 @@
         ],
         "parameters": [
           {
-            "name": "headers",
+            "name": "X-Key",
             "in": "header",
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "123456"
+          },
+          {
+            "name": "author_id",
+            "in": "query",
+            "schema": { "type": "string" },
+            "example": "1"
           }
         ],
-        "summary": "Returns books",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
+        "summary": "Get books",
         "responses": {
           "200": {
             "description": "OK",
@@ -112,23 +113,7 @@
         "tags": [
           "Books"
         ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Doesn't create a new book",
+        "summary": "Create a book",
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -169,7 +154,7 @@
                 }
               },
               "schema": {
-                "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                "$ref": "/Users/stef/dev/gems/dox-demo/spec/api_doc/v1/schemas/book.json"
               }
             }
           }
@@ -206,7 +191,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/book.json"
                 }
               }
             }
@@ -264,7 +249,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/errors.json"
                 }
               }
             }
@@ -287,19 +272,13 @@
           },
           {
             "name": "author_id",
-            "in": "header",
+            "in": "query",
             "schema": {
               "type": "number"
             }
           }
         ],
-        "summary": "Does not return a book",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
+        "summary": "Get a book",
         "responses": {
           "200": {
             "description": "OK",
@@ -364,7 +343,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/book.json"
                 }
               }
             }
@@ -386,7 +365,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/errors.json"
                 }
               }
             }
@@ -404,16 +383,9 @@
             "schema": {
               "type": "number"
             }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
-        "summary": "Returns unprocessable entity",
+        "summary": "Update a book",
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -444,7 +416,7 @@
                 }
               },
               "schema": {
-                "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                "$ref": "/Users/stef/dev/gems/dox-demo/spec/api_doc/v1/schemas/book.json"
               }
             }
           }
@@ -481,7 +453,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/book.json"
                 }
               }
             }
@@ -508,7 +480,7 @@
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/errors.json"
                 }
               }
             }
@@ -528,13 +500,7 @@
             }
           }
         ],
-        "summary": "Deletes the requested book",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
+        "summary": "Delete a book",
         "responses": {
           "204": {
             "description": "No Content",
