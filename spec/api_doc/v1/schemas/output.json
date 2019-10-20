@@ -8,630 +8,19 @@
     "version": "2.0"
   },
   "paths": {
-    "/api/v1/authors": {
-      "get": {
-        "tags": [
-          "Authors"
-        ],
-        "summary": "Returns a list of authors",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": [
-                    {
-                      "id": "1",
-                      "type": "authors",
-                      "attributes": {
-                        "name": "Author_1"
-                      },
-                      "relationships": {
-                        "books": {
-                          "meta": {
-                            "included": false
-                          }
-                        }
-                      }
-                    }
-                  ]
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Authors"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Returns unprocessable entity",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "author",
-                  "attributes": {
-                    "name": ""
-                  }
-                }
-              },
-              "schema": {
-                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "2",
-                    "type": "authors",
-                    "attributes": {
-                      "name": "Author_5"
-                    },
-                    "relationships": {
-                      "books": {
-                        "meta": {
-                          "included": false
-                        }
-                      }
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
-                    }
-                  ]
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/authors/{id}": {
-      "get": {
-        "tags": [
-          "Authors"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "summary": "Does not find an author",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "authors",
-                    "attributes": {
-                      "name": "Author_2"
-                    },
-                    "relationships": {
-                      "books": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "detail": "Couldn't find Author with 'id'=invalid_id"
-                    }
-                  ]
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Authors"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Returns unprocessable entity",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "author",
-                  "id": 1,
-                  "attributes": {
-                    "name": ""
-                  }
-                }
-              },
-              "schema": {
-                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "authors",
-                    "attributes": {
-                      "name": "New Author"
-                    },
-                    "relationships": {
-                      "books": {
-                        "meta": {
-                          "included": false
-                        }
-                      }
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
-                    }
-                  ]
-                },
-                "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors.json"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Authors"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Deletes the requested author",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "author",
-                  "id": 1,
-                  "attributes": {
-                    "name": "New Author"
-                  }
-                }
-              },
-              "schema": {
-                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/namespace/authors.json"
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "content": {
-              "[]": {
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/book_collections": {
-      "get": {
-        "tags": [
-          "Book Collections"
-        ],
-        "summary": "Returns book collections",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": [
-                    {
-                      "id": "1",
-                      "type": "book_collections",
-                      "attributes": {
-                        "name": "Book_collection_1"
-                      },
-                      "relationships": {
-                        "books": {
-                          "meta": {
-                            "included": false
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Book Collections"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Returns unprocessable entity",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "book_collection",
-                  "attributes": {
-                    "name": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "2",
-                    "type": "book_collections",
-                    "attributes": {
-                      "name": "Book_collection_5"
-                    },
-                    "relationships": {
-                      "books": {
-                        "meta": {
-                          "included": false
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/book_collections/{id}": {
-      "get": {
-        "tags": [
-          "Book Collections"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "summary": "Does not find a book collection",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "book_collections",
-                    "attributes": {
-                      "name": "Book_collection_2"
-                    },
-                    "relationships": {
-                      "books": {
-                        "data": [
-
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "detail": "Couldn't find BookCollection with 'id'=invalid_id"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Book Collections"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "summary": "Returns unprocessable entity",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "book_collection",
-                  "id": 1,
-                  "attributes": {
-                    "name": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "book_collections",
-                    "attributes": {
-                      "name": "New Book Collection"
-                    },
-                    "relationships": {
-                      "books": {
-                        "meta": {
-                          "included": false
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Book Collections"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "summary": "Deletes the requested book collection",
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content",
-            "content": {
-              "[]": {
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/books": {
       "get": {
         "tags": [
           "Books"
+        ],
+        "parameters": [
+          {
+            "name": "headers",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "summary": "Returns books",
         "requestBody": {
@@ -645,31 +34,74 @@
             "description": "OK",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": [
-                    {
-                      "id": "1",
-                      "type": "books",
-                      "attributes": {
-                        "name": "Book_1"
-                      },
-                      "relationships": {
-                        "author": {
-                          "meta": {
-                            "included": false
+                "examples": {
+                  "returns books": {
+                    "summary": "returns books",
+                    "value": {
+                      "data": [
+                        {
+                          "id": "1",
+                          "type": "books",
+                          "attributes": {
+                            "name": "Book_1"
+                          },
+                          "relationships": {
+                            "author": {
+                              "meta": {
+                                "included": false
+                              }
+                            },
+                            "book_collection": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
                           }
                         },
-                        "book_collection": {
-                          "meta": {
-                            "included": false
+                        {
+                          "id": "2",
+                          "type": "books",
+                          "attributes": {
+                            "name": "Book_2"
+                          },
+                          "relationships": {
+                            "author": {
+                              "meta": {
+                                "included": false
+                              }
+                            },
+                            "book_collection": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "id": "3",
+                          "type": "books",
+                          "attributes": {
+                            "name": "Book_3"
+                          },
+                          "relationships": {
+                            "author": {
+                              "meta": {
+                                "included": false
+                              }
+                            },
+                            "book_collection": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
                           }
                         }
-                      }
+                      ]
                     }
-                  ]
+                  }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -700,16 +132,44 @@
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "book",
-                  "attributes": {
-                    "name": ""
+              "examples": {
+                "creates a new book": {
+                  "summary": "creates a new book",
+                  "value": {
+                    "data": {
+                      "type": "book",
+                      "attributes": {
+                        "name": "New Book",
+                        "author_id": 1
+                      }
+                    }
+                  }
+                },
+                "returns unprocessable entity": {
+                  "summary": "returns unprocessable entity",
+                  "value": {
+                    "data": {
+                      "type": "book",
+                      "attributes": {
+                        "name": ""
+                      }
+                    }
+                  }
+                },
+                "doesn't create a new book": {
+                  "summary": "doesn't create a new book",
+                  "value": {
+                    "data": {
+                      "type": "book",
+                      "attributes": {
+                        "name": ""
+                      }
+                    }
                   }
                 }
               },
               "schema": {
-                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/books.json"
+                "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
               }
             }
           }
@@ -719,29 +179,34 @@
             "description": "Created",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "2",
-                    "type": "books",
-                    "attributes": {
-                      "name": "New Book"
-                    },
-                    "relationships": {
-                      "author": {
-                        "meta": {
-                          "included": false
-                        }
-                      },
-                      "book_collection": {
-                        "meta": {
-                          "included": false
+                "examples": {
+                  "creates a new book": {
+                    "summary": "creates a new book",
+                    "value": {
+                      "data": {
+                        "id": "2",
+                        "type": "books",
+                        "attributes": {
+                          "name": "New Book"
+                        },
+                        "relationships": {
+                          "author": {
+                            "meta": {
+                              "included": false
+                            }
+                          },
+                          "book_collection": {
+                            "meta": {
+                              "included": false
+                            }
+                          }
                         }
                       }
                     }
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -750,28 +215,56 @@
             "description": "Unprocessable Entity",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Author must exist",
-                      "source": {
-                        "parameter": "author",
-                        "pointer": "data/attributes/author"
-                      }
-                    },
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
+                "examples": {
+                  "returns unprocessable entity": {
+                    "summary": "returns unprocessable entity",
+                    "value": {
+                      "errors": [
+                        {
+                          "title": "Unprocessable Entity",
+                          "detail": "Author must exist",
+                          "source": {
+                            "parameter": "author",
+                            "pointer": "data/attributes/author"
+                          }
+                        },
+                        {
+                          "title": "Unprocessable Entity",
+                          "detail": "Name can't be blank",
+                          "source": {
+                            "parameter": "name",
+                            "pointer": "data/attributes/name"
+                          }
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "doesn't create a new book": {
+                    "summary": "doesn't create a new book",
+                    "value": {
+                      "errors": [
+                        {
+                          "title": "Unprocessable Entity",
+                          "detail": "Author must exist",
+                          "source": {
+                            "parameter": "author",
+                            "pointer": "data/attributes/author"
+                          }
+                        },
+                        {
+                          "title": "Unprocessable Entity",
+                          "detail": "Name can't be blank",
+                          "source": {
+                            "parameter": "name",
+                            "pointer": "data/attributes/name"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -812,61 +305,66 @@
             "description": "OK",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "books",
-                    "attributes": {
-                      "name": "Book_2"
-                    },
-                    "relationships": {
-                      "author": {
-                        "data": {
+                "examples": {
+                  "returns a book": {
+                    "summary": "returns a book",
+                    "value": {
+                      "data": {
+                        "id": "1",
+                        "type": "books",
+                        "attributes": {
+                          "name": "Book_4"
+                        },
+                        "relationships": {
+                          "author": {
+                            "data": {
+                              "type": "authors",
+                              "id": "1"
+                            }
+                          },
+                          "book_collection": {
+                            "data": {
+                              "type": "book_collections",
+                              "id": "1"
+                            }
+                          }
+                        }
+                      },
+                      "included": [
+                        {
+                          "id": "1",
                           "type": "authors",
-                          "id": "1"
-                        }
-                      },
-                      "book_collection": {
-                        "data": {
+                          "attributes": {
+                            "name": "Author_4"
+                          },
+                          "relationships": {
+                            "books": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "id": "1",
                           "type": "book_collections",
-                          "id": "1"
-                        }
-                      }
-                    }
-                  },
-                  "included": [
-                    {
-                      "id": "1",
-                      "type": "authors",
-                      "attributes": {
-                        "name": "Author_16"
-                      },
-                      "relationships": {
-                        "books": {
-                          "meta": {
-                            "included": false
+                          "attributes": {
+                            "name": "Book_collection_4"
+                          },
+                          "relationships": {
+                            "books": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
                           }
                         }
-                      }
-                    },
-                    {
-                      "id": "1",
-                      "type": "book_collections",
-                      "attributes": {
-                        "name": "Book_collection_16"
-                      },
-                      "relationships": {
-                        "books": {
-                          "meta": {
-                            "included": false
-                          }
-                        }
-                      }
+                      ]
                     }
-                  ]
+                  }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -875,15 +373,20 @@
             "description": "Not Found",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "detail": "Couldn't find Book with 'id'=invalid_id"
+                "examples": {
+                  "does not return a book": {
+                    "summary": "does not return a book",
+                    "value": {
+                      "errors": [
+                        {
+                          "detail": "Couldn't find Book with 'id'=invalid_id"
+                        }
+                      ]
                     }
-                  ]
+                  }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -914,17 +417,34 @@
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
-              "example": {
-                "data": {
-                  "type": "book",
-                  "id": 1,
-                  "attributes": {
-                    "name": ""
+              "examples": {
+                "updates the requested book": {
+                  "summary": "updates the requested book",
+                  "value": {
+                    "data": {
+                      "type": "book",
+                      "id": 1,
+                      "attributes": {
+                        "name": "New Book"
+                      }
+                    }
+                  }
+                },
+                "returns unprocessable entity": {
+                  "summary": "returns unprocessable entity",
+                  "value": {
+                    "data": {
+                      "type": "book",
+                      "id": 1,
+                      "attributes": {
+                        "name": ""
+                      }
+                    }
                   }
                 }
               },
               "schema": {
-                "$ref": "/Users/vjeks/repos/dox-demo/spec/api_doc/v1/schemas/books.json"
+                "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
               }
             }
           }
@@ -934,29 +454,34 @@
             "description": "OK",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "data": {
-                    "id": "1",
-                    "type": "books",
-                    "attributes": {
-                      "name": "New Book"
-                    },
-                    "relationships": {
-                      "author": {
-                        "meta": {
-                          "included": false
-                        }
-                      },
-                      "book_collection": {
-                        "meta": {
-                          "included": false
+                "examples": {
+                  "updates the requested book": {
+                    "summary": "updates the requested book",
+                    "value": {
+                      "data": {
+                        "id": "1",
+                        "type": "books",
+                        "attributes": {
+                          "name": "New Book"
+                        },
+                        "relationships": {
+                          "author": {
+                            "meta": {
+                              "included": false
+                            }
+                          },
+                          "book_collection": {
+                            "meta": {
+                              "included": false
+                            }
+                          }
                         }
                       }
                     }
                   }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -965,20 +490,25 @@
             "description": "Unprocessable Entity",
             "content": {
               "application/vnd.api+json; charset=utf-8": {
-                "example": {
-                  "errors": [
-                    {
-                      "title": "Unprocessable Entity",
-                      "detail": "Name can't be blank",
-                      "source": {
-                        "parameter": "name",
-                        "pointer": "data/attributes/name"
-                      }
+                "examples": {
+                  "returns unprocessable entity": {
+                    "summary": "returns unprocessable entity",
+                    "value": {
+                      "errors": [
+                        {
+                          "title": "Unprocessable Entity",
+                          "detail": "Name can't be blank",
+                          "source": {
+                            "parameter": "name",
+                            "pointer": "data/attributes/name"
+                          }
+                        }
+                      ]
                     }
-                  ]
+                  }
                 },
                 "schema": {
-                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books.json"
+                  "$ref": "/Users/stef/dev/gems/dox-demo/spec/support/schemas/api/v1/books.json"
                 }
               }
             }
@@ -1019,29 +549,14 @@
   },
   "tags": [
     {
-      "name": "Authors",
-      "description": "Normal desc"
-    },
-    {
-      "name": "Book Collections",
-      "description": ""
-    },
-    {
       "name": "Books",
       "description": "### Supported filter params\n  - author_id\n"
     }
   ],
   "x-tagGroups": [
     {
-      "name": "Authors",
-      "tags": [
-        "Authors"
-      ]
-    },
-    {
       "name": "Books",
       "tags": [
-        "Book Collections",
         "Books"
       ]
     }

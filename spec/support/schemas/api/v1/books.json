@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "book.json#/definitions/book"
+      }
+    }
+  }
+}

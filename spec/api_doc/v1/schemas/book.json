@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "type": { "type": "string" },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "author_id": { "type": "integer" }
+      }
+    }
+  }
+}

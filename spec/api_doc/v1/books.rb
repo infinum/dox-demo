@@ -10,7 +10,7 @@ module ApiDoc
           endpoint '/books'
           group 'Books'
           desc 'books.md'
-          schema 'books'
+          schema 'api/v1/books'
         end
       end
 

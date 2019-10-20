@@ -9,6 +9,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'dox'
+require 'json_matchers/rspec'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -84,7 +85,9 @@ end
 Dox.configure do |config|
   config.header_file_path = Rails.root.join('spec/api_doc/v1/descriptions/header.json')
   config.desc_folder_path = Rails.root.join('spec/api_doc/v1/descriptions')
-  config.schema_request_folder_path = Rails.root.join('spec/api_doc/v1/schemas')
-  config.schema_response_folder_path = Rails.root.join('spec/support/v1/schemas')
+  config.schema_request_folder_path = Rails.root.join('spec/support/schemas')
+  config.schema_response_folder_path = Rails.root.join('spec/support/schemas')
   config.headers_whitelist = ['Accept']
 end
+
+JsonMatchers.schema_root = 'spec/support/schemas'
