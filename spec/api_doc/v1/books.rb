@@ -10,28 +10,47 @@ module ApiDoc
           endpoint '/books'
           group 'Books'
           desc 'books.md'
-          schema 'books'
         end
       end
 
       document :index do
-        action 'Get books'
+        action 'Get books' do
+          request_schema 'books'
+          response_schema_success 'books_s'
+          response_schema_fail 'books_f'
+        end
       end
 
       document :show do
-        action 'Get a book'
+        action 'Get a book' do
+          request_schema 'books'
+          response_schema_success 'books_s'
+          response_schema_fail 'books_f'
+        end
       end
 
       document :update do
-        action 'Update a book'
+        action 'Update a book' do
+          request_schema 'books'
+          response_schema_success 'books_s'
+          response_schema_fail 'books_f'
+        end
       end
 
       document :create do
-        action 'Create a book'
+        action 'Create a book' do
+          request_schema 'books'
+          response_schema_success 'books_s'
+          response_schema_fail 'books_f'
+        end
       end
 
       document :destroy do
-        action 'Delete a book'
+        action 'Delete a book' do
+          request_schema 'books'
+          response_schema_success 'books_s'
+          response_schema_fail 'books_f'
+        end
       end
     end
   end

@@ -41,6 +41,12 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
         end.to change(Author, :count).by(1)
       end
 
+      it 'creates a new Author 2', :dox do
+        expect do
+          post :create, body: jsonapi_body(nil, :author, valid_attributes)
+        end.to change(Author, :count).by(1)
+      end
+
       it 'returns 201 status' do
         post :create, body: jsonapi_body(nil, :author, valid_attributes)
         expect(response).to have_http_status(201)
