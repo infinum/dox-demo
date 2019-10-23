@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "relationship": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "included": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "jsonapi": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties":{
+        "current_page": { "type": "integer" },
+        "total_pages": { "type": "integer" },
+        "total_count": { "type": "integer" },
+        "max_page_size": { "type": "integer" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "properties":{
+        "self": { "type": "string" },
+        "first": { "type": "string" },
+        "last": { "type": "string" }
+      }
+    }
+  }
+}
+

@@ -5,6 +5,8 @@ module ApiDoc
     module Books
       extend Dox::DSL::Syntax
 
+      show_params = { id: { type: :number, required: :required, value: 1, description: 'bid id' } }
+
       document :api do
         resource 'Books' do
           endpoint '/books'
@@ -18,6 +20,7 @@ module ApiDoc
           request_schema 'books'
           response_schema_success 'books_s'
           response_schema_fail 'books_f'
+          params show_params
         end
       end
 

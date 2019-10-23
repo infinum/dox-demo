@@ -5,6 +5,8 @@ module ApiDoc
     module Authors
       extend Dox::DSL::Syntax
 
+      show_params = { id: { type: :number, required: :required, value: 1, description: 'bid id' } }
+
       document :api do
         resource 'Authors' do
           endpoint '/authors'
@@ -26,6 +28,7 @@ module ApiDoc
           request_schema 'namespace/authors'
           response_schema_success 'namespace/authors_s'
           response_schema_fail 'namespace/authors_f'
+          params show_params
         end
       end
 

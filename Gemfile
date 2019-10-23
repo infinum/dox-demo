@@ -29,6 +29,7 @@ end
 group :test do
   gem 'dox', require: false, path: '/Users/vjeks/repos/dox'
   gem 'factory_girl_rails'
+  gem 'json_matchers', '0.9.0'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end

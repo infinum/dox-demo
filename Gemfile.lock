@@ -45,6 +45,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     arel (7.1.4)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -67,7 +69,11 @@ GEM
       activesupport (>= 4.2.0)
     hitimes (1.2.5)
     i18n (0.8.1)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     json_api_responders (2.5.0)
+    json_matchers (0.9.0)
+      json-schema (~> 2.7)
     jsonapi-deserializable (0.1.1)
       jsonapi-parser (= 0.1.1)
     jsonapi-parser (0.1.1)
@@ -105,6 +111,7 @@ GEM
     pry-stack_explorer (0.4.9.3)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    public_suffix (4.0.1)
     puma (3.8.2)
     rack (2.0.3)
     rack-test (0.6.3)
@@ -187,6 +194,7 @@ DEPENDENCIES
   dox!
   factory_girl_rails
   json_api_responders
+  json_matchers (= 0.9.0)
   jsonapi-rails
   listen
   pry-nav

@@ -14,6 +14,17 @@
         "tags": [
           "Authors"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": "required",
+            "description": "bid id",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -60,25 +71,6 @@
         "tags": [
           "Authors"
         ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          }
-        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -123,6 +115,18 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created",
@@ -309,13 +313,6 @@
             }
           },
           {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "Accept",
             "in": "header",
             "example": "application/vnd.api+json"
@@ -446,13 +443,6 @@
             }
           },
           {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "Accept",
             "in": "header",
             "example": "application/vnd.api+json"
@@ -490,7 +480,10 @@
           "204": {
             "description": "No Content",
             "content": {
-              "[]": {
+              "any": {
+                "schema": {
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/namespace/authors_s.json"
+                }
               }
             },
             "headers": {
@@ -548,25 +541,6 @@
         "tags": [
           "Book Collections"
         ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          }
-        ],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
@@ -597,6 +571,18 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created",
@@ -752,13 +738,6 @@
             }
           },
           {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "Accept",
             "in": "header",
             "example": "application/vnd.api+json"
@@ -884,7 +863,7 @@
           "204": {
             "description": "No Content",
             "content": {
-              "[]": {
+              "any": {
               }
             },
             "headers": {
@@ -898,6 +877,17 @@
         "summary": "Get books",
         "tags": [
           "Books"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": "required",
+            "description": "bid id",
+            "schema": {
+              "type": "number"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -914,6 +904,44 @@
                           "type": "books",
                           "attributes": {
                             "name": "Book_1"
+                          },
+                          "relationships": {
+                            "author": {
+                              "meta": {
+                                "included": false
+                              }
+                            },
+                            "book_collection": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "id": "2",
+                          "type": "books",
+                          "attributes": {
+                            "name": "Book_2"
+                          },
+                          "relationships": {
+                            "author": {
+                              "meta": {
+                                "included": false
+                              }
+                            },
+                            "book_collection": {
+                              "meta": {
+                                "included": false
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "id": "3",
+                          "type": "books",
+                          "attributes": {
+                            "name": "Book_3"
                           },
                           "relationships": {
                             "author": {
@@ -949,32 +977,6 @@
         "summary": "Create a book",
         "tags": [
           "Books"
-        ],
-        "parameters": [
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "author_id",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          },
-          {
-            "name": "Content-Type",
-            "in": "header",
-            "example": "application/vnd.api+json"
-          }
         ],
         "requestBody": {
           "content": {
@@ -1021,6 +1023,18 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "example": "application/vnd.api+json"
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created",
@@ -1142,13 +1156,6 @@
             "schema": {
               "type": "number"
             }
-          },
-          {
-            "name": "author_id",
-            "in": "query",
-            "schema": {
-              "type": "number"
-            }
           }
         ],
         "responses": {
@@ -1164,7 +1171,7 @@
                         "id": "1",
                         "type": "books",
                         "attributes": {
-                          "name": "Book_2"
+                          "name": "Book_4"
                         },
                         "relationships": {
                           "author": {
@@ -1186,7 +1193,7 @@
                           "id": "1",
                           "type": "authors",
                           "attributes": {
-                            "name": "Author_18"
+                            "name": "Author_20"
                           },
                           "relationships": {
                             "books": {
@@ -1200,7 +1207,7 @@
                           "id": "1",
                           "type": "book_collections",
                           "attributes": {
-                            "name": "Book_collection_16"
+                            "name": "Book_collection_18"
                           },
                           "relationships": {
                             "books": {
@@ -1265,13 +1272,6 @@
             "in": "path",
             "schema": {
               "type": "number"
-            }
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "schema": {
-              "type": "string"
             }
           },
           {
@@ -1414,7 +1414,10 @@
           "204": {
             "description": "No Content",
             "content": {
-              "[]": {
+              "any": {
+                "schema": {
+                  "$ref": "/Users/vjeks/repos/dox-demo/spec/support/v1/schemas/books_s.json"
+                }
               }
             },
             "headers": {
