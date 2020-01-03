@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
   include ApiDoc::V1::Authors::Api
   let!(:author) { create(:author) }
@@ -34,7 +36,15 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
     include ApiDoc::V1::Authors::Create
     context 'with valid params' do
       it 'creates a new Author', :dox do
-        expect { post :create, body: jsonapi_body(nil, :author, valid_attributes) }.to change(Author, :count).by(1)
+        expect do
+          post :create, body: jsonapi_body(nil, :author, valid_attributes)
+        end.to change(Author, :count).by(1)
+      end
+
+      it 'creates a new Author 2', :dox do
+        expect do
+          post :create, body: jsonapi_body(nil, :author, valid_attributes)
+        end.to change(Author, :count).by(1)
       end
 
       it 'returns 201 status' do
@@ -45,12 +55,14 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
 
     context 'with invalid params' do
       it 'returns unprocessable entity', :dox do
-        post :create,  body: jsonapi_body(nil, :author, invalid_attributes)
+        post :create, body: jsonapi_body(nil, :author, invalid_attributes)
         expect(response).to have_http_status(422)
       end
 
       it "doesn't create a new author" do
-        expect { post :create, body: jsonapi_body(nil, :author, invalid_attributes) }.to_not change(Author, :count)
+        expect do
+          post :create, body: jsonapi_body(nil, :author, invalid_attributes)
+        end.to_not change(Author, :count)
       end
     end
   end
@@ -59,12 +71,14 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
     include ApiDoc::V1::Authors::Update
     context 'with valid params' do
       it 'updates the requested author', :dox do
-        put :update, params: { id: author.id }, body: jsonapi_body(author.id, :author, name: 'New Author')
+        put :update, params: { id: author.id },
+                     body: jsonapi_body(author.id, :author, name: 'New Author')
         expect(author.reload.name).to eq 'New Author'
       end
 
       it 'returns 200 status' do
-        put :update, params: { id: author.id }, body: jsonapi_body(author.id, :author, name: 'New Author')
+        put :update, params: { id: author.id },
+                     body: jsonapi_body(author.id, :author, name: 'New Author')
         expect(response).to have_http_status(:ok)
       end
     end
@@ -80,11 +94,15 @@ RSpec.describe Api::V1::AuthorsController, api: true, type: :controller do
   describe 'DELETE #destroy' do
     include ApiDoc::V1::Authors::Destroy
     it 'deletes the requested author', :dox do
-      expect { delete :destroy, params: { id: author.id } }.to change(Author, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: author.id },
+                         body: jsonapi_body(author.id, :author, name: 'New Author')
+      end.to change(Author, :count).by(-1)
     end
 
     it 'returns 204 status' do
-      delete :destroy, params: { id: author.id }
+      delete :destroy, params: { id: author.id },
+                       body: jsonapi_body(author.id, :author, name: 'New Author')
       expect(response).to have_http_status(204)
     end
   end

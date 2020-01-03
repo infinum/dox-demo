@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'dox'
+require 'json_matchers/rspec'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -68,19 +71,24 @@ RSpec.configure do |config|
   end
 end
 
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
+# Shoulda::Matchers.configure do |config|
+#   config.integrate do |with|
+#     with.test_framework :rspec
+#     with.library :rails
+#   end
+# end
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
 
 Dox.configure do |config|
-  config.header_file_path = Rails.root.join('spec/api_doc/v1/descriptions/header.md')
+  config.body_file_path = Rails.root.join('spec/api_doc/v1/descriptions/body.json')
   config.desc_folder_path = Rails.root.join('spec/api_doc/v1/descriptions')
+  config.schema_request_folder_path = Rails.root.join('spec/api_doc/v1/schemas')
+  config.schema_response_folder_path = Rails.root.join('spec/support/schemas/api/v1')
+  config.schema_response_fail_file_path = Rails.root.join('spec/support/schemas/api/v1/error.json')
   config.headers_whitelist = ['Accept']
 end
+
+JsonMatchers.schema_root = 'spec/support/schemas'

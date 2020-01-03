@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class BooksController < ApplicationController
@@ -7,7 +9,7 @@ module Api
       end
 
       def show
-        respond_with Book.find(params[:id]), class: serializer, include: [:author, :book_collection]
+        respond_with Book.find(params[:id]), class: serializer, include: %i[author book_collection]
       end
 
       def create

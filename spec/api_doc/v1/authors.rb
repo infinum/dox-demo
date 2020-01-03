@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApiDoc
   module V1
     module Authors
@@ -7,31 +9,40 @@ module ApiDoc
         resource 'Authors' do
           endpoint '/authors'
           group 'Authors'
-        end
-
-        group 'Authors' do
-          desc 'Authors group'
+          desc 'Normal desc'
         end
       end
 
       document :index do
-        action 'Get authors'
+        action 'Get authors' do
+          response_schema_success 'authors'
+        end
       end
 
       document :show do
-        action 'Get an author'
+        action 'Get an author' do
+          response_schema_success 'author'
+        end
       end
 
       document :update do
-        action 'Update an author'
+        action 'Update an author' do
+          request_schema 'author'
+          response_schema_success 'author'
+        end
       end
 
       document :create do
-        action 'Create an author'
+        action 'Create an author' do
+          request_schema 'author'
+          response_schema_success 'author'
+        end
       end
 
       document :destroy do
-        action 'Delete an author'
+        action 'Delete an author' do
+          response_schema_success 'author'
+        end
       end
     end
   end

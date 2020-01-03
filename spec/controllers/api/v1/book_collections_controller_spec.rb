@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::V1::BookCollectionsController, api: true, type: :controller do
   include ApiDoc::V1::BookCollections::Api
   let!(:book_collection) { create(:book_collection) }
@@ -33,7 +35,9 @@ RSpec.describe Api::V1::BookCollectionsController, api: true, type: :controller 
     include ApiDoc::V1::BookCollections::Create
     context 'with valid params' do
       it 'creates a new book collection', :dox do
-        expect { post :create, body: jsonapi_body(nil, :book_collection, valid_attributes) }.to change(BookCollection, :count).by(1)
+        expect do
+          post :create, body: jsonapi_body(nil, :book_collection, valid_attributes)
+        end.to change(BookCollection, :count).by(1)
       end
 
       it 'returns 201 status' do
@@ -49,7 +53,9 @@ RSpec.describe Api::V1::BookCollectionsController, api: true, type: :controller 
       end
 
       it "doesn't create a new BookCollection" do
-        expect { post :create, body: jsonapi_body(nil, :book_collection, invalid_attributes) }.not_to change(BookCollection, :count)
+        expect do
+          post :create, body: jsonapi_body(nil, :book_collection, invalid_attributes)
+        end.not_to change(BookCollection, :count)
       end
     end
   end
@@ -58,19 +64,24 @@ RSpec.describe Api::V1::BookCollectionsController, api: true, type: :controller 
     include ApiDoc::V1::BookCollections::Update
     context 'with valid params' do
       it 'updates the requested book collection', :dox do
-        put :update, params: { id: book_collection.id }, body: jsonapi_body(book_collection.id, :book_collection, name: 'New Book Collection')
+        put :update, params: { id: book_collection.id },
+                     body: jsonapi_body(book_collection.id,
+                                        :book_collection, name: 'New Book Collection')
         expect(book_collection.reload.name).to eq 'New Book Collection'
       end
 
       it 'returns 200 status' do
-        put :update, params: { id: book_collection.id }, body: jsonapi_body(book_collection.id, :book_collection, name: 'New Book Collection')
+        put :update, params: { id: book_collection.id },
+                     body: jsonapi_body(book_collection.id,
+                                        :book_collection, name: 'New Book Collection')
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'with invalid params' do
       it 'returns unprocessable entity', :dox do
-        put :update, params: { id: book_collection.id }, body: jsonapi_body(book_collection.id, :book_collection, name: '')
+        put :update, params: { id: book_collection.id },
+                     body: jsonapi_body(book_collection.id, :book_collection, name: '')
         expect(response).to have_http_status(422)
       end
     end

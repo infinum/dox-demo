@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::V1::BooksController, api: true, type: :controller do
   include ApiDoc::V1::Books::Api
   let(:author) { create(:author) }
@@ -9,8 +11,12 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
   describe 'GET #index' do
     include ApiDoc::V1::Books::Index
     it 'returns books', :dox do
-      get :index
+      create_list(:book, 2)
+
+      get :index, headers: { 'X-Key' => '123456' }
+
       expect(response).to have_http_status(:ok)
+      expect(response).to match_response_schema('api/v1/books')
     end
   end
 
@@ -18,8 +24,9 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Show
     context 'valid params' do
       it 'returns a book', :dox do
-        get :show, params: { id: book.id }
+        get :show, params: { id: book.id, author_id: author.id }
         expect(response).to have_http_status(:ok)
+        expect(response).to match_response_schema('api/v1/book')
       end
     end
 
@@ -35,12 +42,15 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
     include ApiDoc::V1::Books::Create
     context 'with valid params' do
       it 'creates a new book', :dox do
-        expect { post :create, body: jsonapi_body(nil, :book, valid_attributes) }.to change(Book, :count).by(1)
+        expect do
+          post :create, body: jsonapi_body(nil, :book, valid_attributes)
+        end.to change(Book, :count).by(1)
       end
 
       it 'returns 201 status' do
         post :create, body: jsonapi_body(nil, :book, valid_attributes)
         expect(response).to have_http_status(201)
+        expect(response).to match_response_schema('api/v1/book')
       end
     end
 
@@ -51,7 +61,9 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
       end
 
       it "doesn't create a new book" do
-        expect { post :create, body: jsonapi_body(nil, :book, invalid_attributes) }.to_not change(Book, :count)
+        expect do
+          post :create, body: jsonapi_body(nil, :book, invalid_attributes)
+        end.to_not change(Book, :count)
       end
     end
   end
@@ -67,6 +79,7 @@ RSpec.describe Api::V1::BooksController, api: true, type: :controller do
       it 'returns 200 status' do
         put :update, params: { id: book }, body: jsonapi_body(book.id, :book, name: 'New Book')
         expect(response).to have_http_status(:ok)
+        expect(response).to match_response_schema('api/v1/book')
       end
     end
 

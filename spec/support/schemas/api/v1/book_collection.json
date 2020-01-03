@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "book_collection": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" }
+          },
+          "required": [ "name" ]
+        },
+        "relationships": {
+          "type": "object",
+          "properties": {
+            "books": { "$ref": "shared.json#/definitions/relationship" }
+          }
+        }
+      },
+      "required": ["id", "type", "attributes", "relationships"]
+    }
+  },
+  "properties": {
+    "data": { "$ref": "book_collection.json#/definitions/book_collection" },
+    "included": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "$ref": "book.json#/definitions/book" }
+        ]
+      }
+    }
+  },
+  "required": ["data"]
+}

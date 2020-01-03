@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "book.json#/definitions/book"
+      }
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "$ref": "author.json#/definitions/author" },
+          { "$ref": "book_collection.json#/definitions/book_collection" }
+        ]
+      }
+    }
+  },
+  "required": ["data"]
+}

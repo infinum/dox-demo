@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "relationship_object": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" }
+      },
+      "required": ["id", "type"]
+    },
+    "relationship": {
+      "type": "object",
+      "anyOf": [
+        {
+          "properties": {
+            "data": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/relationship_object"
+                },
+                {
+                  "type" :"array",
+                  "items": {
+                    "$ref": "#/definitions/relationship_object"
+                  }
+                }
+              ]
+            }
+          },
+          "title": "data"
+        },{
+          "properties": {
+            "meta": {
+              "type": "object",
+              "properties": {
+                "included": { "type": "boolean" }
+              },
+              "required": ["included"]
+            },
+            "required": ["meta"]
+          },
+          "title": "meta"
+        }
+      ]
+    }
+  }
+}
+

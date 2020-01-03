@@ -1,5 +1,5 @@
 LineLength:
-  Max: 100
+  Max: 120
 
 Documentation:
   Enabled: False
@@ -13,3 +13,6 @@ AllCops:
     - 'db/migrate/*.rb'
 Rails:
   Enabled: true
+
+BlockLength:
+  Max: 200
