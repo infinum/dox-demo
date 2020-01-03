@@ -1,8 +1,0 @@
-.DS_Store
-.idea
-.git
-src
-test
-node_modules
-npm-debug.log
-example-compiled.apib
