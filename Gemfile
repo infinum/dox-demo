@@ -27,11 +27,11 @@ group :development do
 end
 
 group :test do
-  gem 'dox', require: false, path: '/Users/vjeks/repos/dox'
-  gem 'factory_girl_rails'
+  gem 'dox', require: false, path: '/Users/stef/dev/gems/dox'
+  gem 'factory_bot_rails'
   gem 'json_matchers', '0.9.0'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  # gem 'shoulda-matchers'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

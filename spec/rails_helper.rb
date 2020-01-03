@@ -71,22 +71,23 @@ RSpec.configure do |config|
   end
 end
 
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
+# Shoulda::Matchers.configure do |config|
+#   config.integrate do |with|
+#     with.test_framework :rspec
+#     with.library :rails
+#   end
+# end
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
 
 Dox.configure do |config|
   config.body_file_path = Rails.root.join('spec/api_doc/v1/descriptions/body.json')
   config.desc_folder_path = Rails.root.join('spec/api_doc/v1/descriptions')
   config.schema_request_folder_path = Rails.root.join('spec/api_doc/v1/schemas')
-  config.schema_response_folder_path = Rails.root.join('spec/support/v1/schemas')
+  config.schema_response_folder_path = Rails.root.join('spec/support/schemas/api/v1')
+  config.schema_response_fail_file_path = Rails.root.join('spec/support/schemas/api/v1/error.json')
   config.headers_whitelist = ['Accept']
 end
 

@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  it { should validate_presence_of(:name) }
-
   describe '#author' do
     context 'when books belonging to different authors exist' do
       let(:author) { create(:author) }

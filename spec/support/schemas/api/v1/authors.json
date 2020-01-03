@@ -3,15 +3,14 @@
     "data": {
       "type": "array",
       "items": {
-        "$ref": "book.json#/definitions/book"
+        "$ref": "author.json#/definitions/author"
       }
     },
     "included": {
       "type": "array",
       "items": {
         "anyOf": [
-          { "$ref": "author.json#/definitions/author" },
-          { "$ref": "book_collection.json#/definitions/book_collection" }
+          { "$ref": "book.json#/definitions/book" }
         ]
       }
     }

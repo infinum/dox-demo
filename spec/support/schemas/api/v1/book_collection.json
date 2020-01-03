@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
-    "book": {
+    "book_collection": {
       "type": "object",
       "properties": {
         "id": { "type": "string" },
@@ -16,8 +16,7 @@
         "relationships": {
           "type": "object",
           "properties": {
-            "author": { "$ref": "shared.json#/definitions/relationship" },
-            "book_collection": { "$ref": "shared.json#/definitions/relationship" }
+            "books": { "$ref": "shared.json#/definitions/relationship" }
           }
         }
       },
@@ -25,13 +24,12 @@
     }
   },
   "properties": {
-    "data": { "$ref": "book.json#/definitions/book" },
+    "data": { "$ref": "book_collection.json#/definitions/book_collection" },
     "included": {
       "type": "array",
       "items": {
         "anyOf": [
-          { "$ref": "author.json#/definitions/author" },
-          { "$ref": "book_collection.json#/definitions/book_collection" }
+          { "$ref": "book.json#/definitions/book" }
         ]
       }
     }

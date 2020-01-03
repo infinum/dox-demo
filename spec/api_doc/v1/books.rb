@@ -5,7 +5,9 @@ module ApiDoc
     module Books
       extend Dox::DSL::Syntax
 
-      show_params = { id: { type: :number, required: :required, value: 1, description: 'bid id' } }
+      index_params = {
+        author_id: { type: :number, required: :required, value: 1, description: 'author id' }
+      }
 
       document :api do
         resource 'Books' do
@@ -17,42 +19,34 @@ module ApiDoc
 
       document :index do
         action 'Get books' do
-          request_schema 'books'
-          response_schema_success 'books_s'
-          response_schema_fail 'books_f'
-          params show_params
+          response_schema_success 'books'
+          params index_params
         end
       end
 
       document :show do
         action 'Get a book' do
-          request_schema 'books'
-          response_schema_success 'books_s'
-          response_schema_fail 'books_f'
+          response_schema_success 'book'
         end
       end
 
       document :update do
         action 'Update a book' do
-          request_schema 'books'
-          response_schema_success 'books_s'
-          response_schema_fail 'books_f'
+          request_schema 'book'
+          response_schema_success 'book'
         end
       end
 
       document :create do
         action 'Create a book' do
-          request_schema 'books'
-          response_schema_success 'books_s'
-          response_schema_fail 'books_f'
+          request_schema 'book'
+          response_schema_success 'book'
         end
       end
 
       document :destroy do
         action 'Delete a book' do
-          request_schema 'books'
-          response_schema_success 'books_s'
-          response_schema_fail 'books_f'
+          response_schema_success 'book'
         end
       end
     end
