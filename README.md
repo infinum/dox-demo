@@ -11,6 +11,4 @@ The API is implemented by the [jsonapi spec](http://jsonapi.org/).
 
 The generated documentation can be viewed here:
 
-- [Apiary version](http://docs.doxdemo.apiary.io)
-- [Aglio version](https://infinum.github.io/dox-demo/aglio)
-- [Snowboard version](https://infinum.github.io/dox-demo/snowboard)
+- [Redocly version](https://infinum.github.io/dox-demo)
